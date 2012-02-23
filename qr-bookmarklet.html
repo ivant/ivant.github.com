@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  
+<html lang="en">  
+  <head>  
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">  
+    <title>QR-code bookmarklet/keyword search</title>  
+    <style type="text/css">
+      body {
+        font-family: sans-serif;
+      }
+      abbr {
+        text-decoration: none;
+        border-bottom: 1px dotted #000;
+      }
+    </style>
+  </head>  
+  <body>
+    <h1>QR-code bookmarklet</h1>
+    <h2>Short description</h2>
+    <p>
+      This bookmarklet provides a way to quickly generate a <a href="http://en.wikipedia.org/wiki/QR-code">QR-code</a> from a current page URL, selection, or arbitrary text if the respective bookmark is configured to work as a keyword search in your browser.
+      This is very useful when you are browsing something on your computer and want to open the same thing on your phone, without resorting to sending yourself an email, IM message, or something of that sort.
+    </p>
+    <h2>How do I use it?</h2>
+    <h3>Bookmarklet</h3>
+    <ul>
+      <li>To get the QR-code of the current page URL: with no selection on the page click the bookmarklet.</li>
+      <li>To get the QR-code of the selected text: select the text, click the bookmarklet.</li>
+    </ul>
+    <h3>Keyword search</h3>
+    <ul>
+      <li>To get the QR-code of arbitrary text: type the name of the assigned <abbr title='see below; "2qr" in my case'>keyword</abbr> in the address line, then a space, then your text, and "open" it.
+    </ul>
+    Firefox only:
+    <ul>
+      <li>To get the QR-code of the current page URL: type the name of the assigned keyword in the address line and "open" it.</li>
+      <li>To get the QR-code of the selected text: select the text, type the name of the assigned keyword in the address line and "open" it.</li>
+    </ul>
+    <p>
+      Powertip: instead of "opening" using the Enter key, which draws the QR-code in the current window, you can use Ctrl-Enter (Cmd-Enter on Mac) to open it in a new tab. This does not work properly for the selection/current page URL though. In <a href="http://vimperator.org/">Vimperator</a> you can use <code>:tabopen</code> to open in a new tab.
+    </p>
+    <h2>How do I install it?</h2>
+    <h3>Installing the bookmarklet</h3>
+    <p>
+      To install it as a bookmarklet, drag and drop the following link to your bookmarks toolbar (or just add it to your bookmarks):
+      <a href="javascript:(function(){qr_query=''+document.getSelection()||document.URL;window.location='https://chart.googleapis.com/chart?chs=540x540&amp;cht=qr&amp;chl='+encodeURIComponent(qr_query);})()">QR-code it!</a>.
+    </p>
+    <h3>Installing the keyword search</h3>
+    <ul>
+      <li><strong>Firefox:</strong><ol>
+        <li>Right-click (Ctrl-click on Mac) in the input field:
+          <form style="display:inline;" action="javascript:(function(){qr_query='%s'||''+document.getSelection()||document.URL;window.location='https://chart.googleapis.com/chart?chs=540x540&amp;cht=qr&amp;chl='+encodeURIComponent(qr_query);})(); //" method="get">
+            <input type="text" readonly value="Right-click here!">
+          </form>
+        </li>
+        <li>Select "Add a Keyword for this Search&hellip;"</li>
+        <li>In the "Name" field enter "<strong>QR-code it!</strong>" or something similar, this is just a bookmark name</li>
+        <li>In the "Keyword" field enter "<strong>2qr</strong>" or something similar, this is the keyword you will be using</li>
+        <li>Accept by clicking "Add" (or a similarly named button)</li>
+      </ol></li>
+      <li><strong>Chrome:</strong>
+        <em>(Rant about Chrome taking too much "care" of its users was graciously removed. Also, JavaScript keyword searches do not work in Chrome. Just bear with me here.)</em>
+        <ol>
+          <li>Copy the following text completely into your clipboard: <input type="text" readonly style="width:100%;" value="https://chart.googleapis.com/chart?chs=540x540&amp;cht=qr&amp;chl=%s"></li>
+          <li>Right-click inside of the address-bar</li>
+          <li>Choose "Edit search engines&hellip;"</li>
+          <li>In the three fields at the bottom of the page, where you can add a search engine type (starting with the leftmost field, going to the right):
+            <ol>
+              <li>"<strong>QR-code it!</strong>" or something similar, this is just a title</li>
+              <li>"<strong>2qr</strong>" or something similar, this is the keyword you will be using</li>
+              <li>Paste the long line that you copied in the step 1 above</li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+    </ul>
+    <h2>Fineprint (important!)</h2>
+    <p>
+      Currently Google Chart API is used to generate the QR-code. That means that any text or link that you convert into a QR-code is sent to a Google server, is probably retained and could be linked to your Google account if you have one.
+      <strong>If you want privacy, this tool (bookmarklet/keyword search) is not for you!</strong>
+    </p>
+    <p>
+      You are free to use it however you like (including the modification and redistribution of the bookmarklet code), just don't blame me if it doesn't work. I provide no guarantees whatsoever that it works with any particular browser, or that it will work in future.
+    </p>
+    <p>2012-02-22, <a href="http://github.com/ivant">Ivan Tarasov</a></p>
+  </body>  
+</html>  
