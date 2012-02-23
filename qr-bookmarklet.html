@@ -14,6 +14,13 @@
     </style>
   </head>  
   <body>
+    <div style="float:right;">
+      <img id="qr" width="400" height="400" src="" />
+      <script type="text/javascript">
+        var imgElem = document.getElementById("qr");
+        imgElem.src = "https://chart.googleapis.com/chart?chs=400x400&cht=qr&chl=" + encodeURIComponent(document.URL);
+      </script>
+    </div>
     <h1>QR-code bookmarklet</h1>
     <h2>Short description</h2>
     <p>
