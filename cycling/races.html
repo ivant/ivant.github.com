@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">  
+<html lang="en">  
+  <head>  
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">  
+    <title>Races</title>  
+    <style type="text/css" src="../default.css"></style>
+    <style type="text/css">
+      .line {
+        fill: none;
+        stroke-width: 1px;
+      }
+    </style>
+    <script type="text/javascript" src="../scripts/ga.js" async="async"></script>
+    <script type="text/javascript" src="../scripts/d3.v2.js"></script>
+  </head>  
+  <body>
+    <h1>Races</h1>
+    <h2>2012-03-04 CCCX</h2>
+    <p>
+      <div id="chart"/>
+    </p>
+    <script type="text/javascript">
+      var w = 1024,
+          h = 768;
+      var x, y_power, y_altitude, y_slope;
+      var json;
+      var samples;
+      var columnSelector = function (c) { return function (s) { return s[c]; } };
+
+      d3.json("race-data/2012-03-04-CCCX.json", function (j) {
+        json = j;
+        samples = json.RIDE.SAMPLES;
+
+        var power = samples.map(columnSelector('WATTS'));
+        var altitude = samples.map(columnSelector('ALT'));
+        var slope = samples.map(columnSelector('SLOPE'));
+
+        x = d3.scale.linear().domain([0, samples.length]).range([0, w]);
+        y_power = d3.scale.linear().domain([0, d3.max(power)]).nice().range([h, 0]);
+        y_altitude = d3.scale.linear().domain([d3.min(altitude), 2*d3.max(altitude)]).nice().range([h, 0]);
+
+        var wattsLine = d3.svg.line()
+          .x(function (s) { return x(s.SECS); })
+          .y(function (s) { return y_power(s.WATTS); });
+
+        var altitudeLine = d3.svg.area()
+          .x(function (s) { return x(s.SECS); })
+          .y(function (s) { return y_altitude(s.ALT); });
+          .fill(function (s) { return slopeColor(slopeNormalize(s.SLOPE)); });
+        var slopeNormalize = d3.scale.linear().domain([0, 30]);
+        var slopeColor = d3.interpolateHsl("#00f", "#f00");
+
+        var vis = d3.select("#chart")
+                  .data([samples])
+                  .append("svg")
+                    .attr("width", w)
+                    .attr("height", h);
+        vis.append("path")
+          .attr("d", altitudeLine)
+          ;
+        vis.append("path")
+          .attr("class", "line")
+          .attr("stroke", "#d16587")
+          .attr("d", wattsLine)
+          ;
+
+      });
+
+    </script>
+  </body>
+</html>  
+
