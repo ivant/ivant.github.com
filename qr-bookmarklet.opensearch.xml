@@ -1,0 +1,8 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>2qr</ShortName>
+  <Description>QR-generator</Description>
+  <Url type="text/html" method="get" template="https://chart.googleapis.com/chart?chs=540x540&amp;cht=qr&amp;chl={searchTerms}"/>
+  <Image width="16" height="16">
+    data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAAgElEQVQ4y6WSSw7AIAhEZ0iP7dJ700W1geKHWBITQRxeJgA+dHMPNXGFqnyzanr73deIwYQdTegTo+hfdgQtOoYm6mw5g8pI+UOg075kTH9KkmDpwTkXgGuoXBgnFj558R7+JpBU18J9SzDbiRRBFxovSpLgyJedBwRAQ0BzAAA3qDQ7SSPmn1YAAAAASUVORK5CYII=
+  </Image>
+</OpenSearchDescription>
