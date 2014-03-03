@@ -1,0 +1,72 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14pt;
+  font-weight: normal;
+  line-height: 1.2em;
+  margin: 15px;
+  background: #20201a;
+}
+
+h1, h2, p {
+  color: #eee;
+}
+
+h2 {
+  text-align: center;
+}
+
+#levelSidebar, #alphabetBox, #trainer {
+  background: #444;
+  padding: 1em;
+}
+
+#alphabetBox, #trainer {
+  margin-left: 1em;
+}
+
+#startStopButton {
+  font-size: 24pt;
+  width: 5em;
+}
+
+#trainingUI {
+  margin-top: 1em;
+  padding: 4pt;
+}
+
+#playedLetter, #typedLetter {
+  font-size: 48pt;
+  font-weight: bold;
+  width: 1.5em;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  border: 1px solid #ccc;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#tardiness {
+  margin-top: 0.5em;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.correct {
+  color: #080 !important;
+}
+.incorrect {
+  color: #c00 !important;
+}
+
+#copyright {
+  font-size: 8pt;
+  color: #aaa;
+}
+
+#copyright > a {
+  color: #aaa;
+}

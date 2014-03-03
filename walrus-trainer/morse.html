@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Morse code trainer</title>
+    <link rel="stylesheet" href="morse.css">
+  </head>
+  <body>
+    <h1>Morse code trainer</h1>
+
+    <div style="display:flex;">
+      <div id="levelSidebar">
+        <h2>Level</h2>
+        <select id="level" name="level" required multiple></select>
+      </div>
+      <div id="alphabetBox">
+        <h2>Alphabet</h2>
+        <input id="alphabet" type="text" name="alphabet" size="40">
+      </div>
+      <div id="trainer">
+        <button id="startStopButton">Start</button>
+        <div id="trainingUI">
+          <div id="playedLetter"></div>
+          <div id="typedLetter"></div>
+          <div id="tardiness"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="copyright">
+      &copy; 2014 Ivan Tarasov. <a href="https://github.com/ivant/walrus-trainer">Source on GitHub</a> is available under MIT License.
+    </div>
+    <script type="application/dart" src="morse.dart"></script>
+    <script src="packages/browser/dart.js"></script>
+  </body>
+</html>
