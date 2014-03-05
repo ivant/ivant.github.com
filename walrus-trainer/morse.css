@@ -24,6 +24,10 @@ h2 {
   margin-left: 1em;
 }
 
+#trainer {
+  text-align: center;
+}
+
 #startStopButton {
   font-size: 24pt;
   width: 5em;
