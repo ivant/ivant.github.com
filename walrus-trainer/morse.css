@@ -41,6 +41,7 @@ h2 {
 #playedLetter, #typedLetter {
   font-size: 48pt;
   font-weight: bold;
+  font-family: monospace;
   width: 1.5em;
   height: 2em;
   line-height: 2em;

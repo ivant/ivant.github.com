@@ -357,6 +357,14 @@ Q:{
 "":"List/Pu;",
 aN:function(a,b){return H.bQ(a,b)},
 ez:function(a,b){return H.VM(new H.A8(a,b),[null,null])},
+zV:function(a,b){var z,y,x,w
+z=a.length
+y=Array(z)
+y.fixed$length=init
+for(x=0;x<a.length;++x){w=H.d(a[x])
+if(x>=z)return H.e(y,x)
+y[x]=w}return y.join(b)},
+eC:function(a){return this.zV(a,"")},
 Zv:function(a,b){if(b>>>0!==b||b>=a.length)return H.e(a,b)
 return a[b]},
 XU:function(a,b,c){return H.Ri(a,b,c,a.length)},
@@ -409,6 +417,8 @@ else return""+a},
 gtU:function(a){return a&0x1FFFFFFF},
 g:function(a,b){if(typeof b!=="number")throw H.b(new P.AT(b))
 return a+b},
+W:function(a,b){if(typeof b!=="number")throw H.b(new P.AT(b))
+return a-b},
 U:function(a,b){if(typeof b!=="number")throw H.b(new P.AT(b))
 return a*b},
 cU:function(a,b){return(a|0)===a?a/b|0:this.yu(a/b)},
@@ -439,7 +449,7 @@ return a.charCodeAt(b)},
 g:function(a,b){if(typeof b!=="string")throw H.b(new P.AT(b))
 return a+b},
 Nj:function(a,b,c){if(c==null)c=a.length
-if(typeof c!=="number"||Math.floor(c)!==c)H.vh(new P.AT(c))
+if(typeof c!=="number"||Math.floor(c)!==c)H.vh(P.u(c))
 if(b<0)throw H.b(P.N(b))
 if(typeof c!=="number")return H.s(c)
 if(b>c)throw H.b(P.N(b))
@@ -3053,7 +3063,7 @@ ad:[function(a,b){return a==null?b==null:a===b},"call$2","N3",4,0,7],
 xv:[function(a){return H.CU(a)},"call$1","J2",2,0,8],
 O8:function(a,b,c){var z,y,x
 z=J.Qi(a,c)
-if(a!==0&&b!=null)for(y=z.length,x=0;x<y;++x)z[x]=b
+if(!J.de(a,0)&&b!=null)for(y=z.length,x=0;x<y;++x)z[x]=b
 return z},
 F:function(a,b,c){var z,y,x,w,v,u,t
 z=H.VM([],[c])
@@ -3133,6 +3143,7 @@ return"0"+a}},
 a6:{
 "":"a;Fq",
 g:function(a,b){return P.k5(0,0,C.CD.g(this.Fq,b.gFq()),0,0,0)},
+W:function(a,b){return P.k5(0,0,C.CD.W(this.Fq,b.gFq()),0,0,0)},
 U:function(a,b){return P.k5(0,0,C.CD.yu(C.CD.UD(this.Fq*b)),0,0,0)},
 C:function(a,b){return C.CD.C(this.Fq,b.gFq())},
 F:function(a,b){return C.CD.F(this.Fq,b.gFq())},
@@ -3471,6 +3482,7 @@ BV:{
 "":"Pu+id;"},
 id:{
 "":"a;",
+sih:function(a,b){this.hV(a,"color",b,"")},
 sR:function(a,b){this.hV(a,"width",b,"")}},
 wz:{
 "":"ar;Sn,Sc",
@@ -3752,21 +3764,27 @@ if(!this.Uh)return
 switch(J.Zm(b)){case 27:this.TP(this)
 return
 case 32:z=this.Yo
-z.qj("")
+z.qj(" ")
 break
 default:z=this.Yo
 z.qj(P.Oo(b.keyCode))
-break}y=this.CB
-if(y.Ce||y.t1.length>=y.aD.length){this.tE.textContent=y.aD
-J.pP(this.Eb).Ex(["correct","incorrect"])
+break}J.pP(this.Eb).Ex(["correct","incorrect"])
+y=this.CB
+y=y.Ce||y.t1.length>=y.aD.length
+x=this.tE
+if(!y){J.FI(x.style,"#888")
+y=this.Eb
+x=this.CB.t1
+y.textContent=x+C.Nm.eC(P.O8(J.xH(this.re,x.length),"\u00b7",J.O))}else{x.style.removeProperty("color")
+this.tE.textContent=this.CB.aD
 y=J.pP(this.Eb)
 x=this.CB
 y.h(y,x.aD===x.t1?"correct":"incorrect")
 y=this.Eb
 w=this.CB
 y.textContent=w.t1
-this.v9.textContent=C.CD.Sy(w.zo,3)
-this.CB=z.AJ()}},"call$1","gS0",2,0,20],
+this.v9.textContent=C.CD.Sy(w.zo,3)}y=this.CB
+if(y.Ce||y.t1.length>=y.aD.length)this.CB=z.AJ()},"call$1","gS0",2,0,20],
 cn:function(){var z,y
 z=H.BU(J.Vm(this.VE),null,null)
 this.re=z
@@ -4021,18 +4039,18 @@ P.Od.$isa=true
 H.yo.$isa=true
 H.IY.$isa=true
 H.aX.$isa=true
-W.Ql.$isQl=true
-W.Ql.$isKV=true
-W.Ql.$isa=true
 P.wv.$iswv=true
 P.wv.$isa=true
 P.mE.$ismE=true
 P.mE.$isa=true
+W.Ql.$isQl=true
+W.Ql.$isKV=true
+W.Ql.$isa=true
+J.Q.$isList=true
+J.Q.$isa=true
 P.a.$isa=true
 J.kn.$isbool=true
 J.kn.$isa=true
-J.Q.$isList=true
-J.Q.$isa=true
 P.b8.$isb8=true
 P.b8.$isa=true
 P.iP.$isiP=true
@@ -4086,6 +4104,7 @@ return J.ks(a)}
 J.AG=function(a){return J.x(a).bu(a)}
 J.C0=function(a,b){return J.w1(a).ez(a,b)}
 J.Dk=function(a){return J.x(a).gtU(a)}
+J.FI=function(a,b){return J.RE(a).sih(a,b)}
 J.Fc=function(a,b){return J.RE(a).sP(a,b)}
 J.GJ=function(a,b,c,d){return J.RE(a).Y9(a,b,c,d)}
 J.GP=function(a){return J.w1(a).gA(a)}
@@ -4122,6 +4141,8 @@ J.qA=function(a){return J.w1(a).br(a)}
 J.uf=function(a){return J.RE(a).gxr(a)}
 J.vP=function(a,b){return J.RE(a).sR(a,b)}
 J.w8=function(a){return J.RE(a).gkc(a)}
+J.xH=function(a,b){if(typeof a=="number"&&typeof b=="number")return a-b
+return J.Wx(a).W(a,b)}
 J.zL=function(a,b){return J.RE(a).slz(a,b)}
 C.KZ=new H.hJ()
 C.Wj=new P.dp()
