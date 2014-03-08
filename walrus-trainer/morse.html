@@ -45,11 +45,40 @@
           <div id="tardiness"></div>
         </div>
       </div>
+      <div id="letterChart" style="display: none;"><div></div></div>
     </div>
 
-    <div id="copyright">
-      &copy; 2014 Ivan Tarasov. <a href="https://github.com/ivant/walrus-trainer">Source on GitHub</a> is available under MIT License.
+    <div id="info">
+      <div id="updates">
+        <h2>Recent updates</h2>
+        <ul>
+          <li>2014-03-07 Added 'Recent updates' and 'Known issues' sections</li>
+          <li>2014-03-07 Added letter chart.</li>
+          <li>2014-03-05 Characters are shown when they are typed,
+              not at the end of the sequence.</li>
+          <li>2014-03-05 Added character sequences longer than one letter.</li>
+          <li>2014-03-03 Published the initial version.</li>
+        </ul>
+      </div>
+      <div id="bugs">
+        <h2>Known issues</h2>
+        <ul>
+          <li>
+            Time measurement for sequences longer than one character is done
+            based on the end of audio of the whole sequence, not of the specific
+            character. Because of that, scoring is screwed up.
+          </li>
+          <li>Progress of a user is not preserved.</li>
+          <li>UI is not nice.</li>
+        </ul>
+      </div>
+      <div id="copyright">
+        &copy; 2014 <a href="http://ivant.github.io">Ivan Tarasov</a>.
+        <a href="https://github.com/ivant/walrus-trainer">Source on GitHub</a>
+        is available under MIT License.
+      </div>
     </div>
+
     <script type="application/dart" src="morse.dart"></script>
     <script src="packages/browser/dart.js"></script>
   </body>

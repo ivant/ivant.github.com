@@ -11,17 +11,34 @@ h1, h2, p {
   color: #eee;
 }
 
-h2 {
+#levelSidebar > h2, #alphabetBox > h2, #trainer > h2 {
   text-align: center;
 }
 
-#levelSidebar, #alphabetBox, #trainer {
+
+#levelSidebar > h2:first-child, #alphabetBox > h2:first-child, #trainer > h2:first-child {
+  margin-top: 0;
+}
+
+#levelSidebar, #alphabetBox, #trainer, #letterChart {
   background: #444;
   padding: 1em;
 }
 
-#alphabetBox, #trainer {
-  margin-left: 1em;
+#alphabetBox, #trainer, #letterChart {
+  margin-left: 0.5em;
+}
+
+#letterChart {
+  width: 600px;
+  height: 360px;
+  background: #eee;
+  padding: 1em;
+}
+
+#letterChart > div {
+  width: 100%;
+  height: 100%;
 }
 
 #trainer {
@@ -67,11 +84,20 @@ h2 {
   color: #c00 !important;
 }
 
-#copyright {
+#info {
   font-size: 8pt;
   color: #aaa;
 }
 
-#copyright > a {
-  color: #aaa;
+#info h2 {
+  margin-bottom: 0.2em;
+}
+
+#info ul {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+#info a {
+  color: #bbb;
 }
