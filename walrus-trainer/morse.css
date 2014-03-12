@@ -69,14 +69,6 @@ h1, h2, p {
   margin-right: auto;
 }
 
-#tardiness {
-  margin-top: 0.5em;
-  color: #fff;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
 .correct {
   color: #080 !important;
 }

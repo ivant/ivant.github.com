@@ -757,11 +757,11 @@ Iy:{
 "":"a;",
 $isbC:true},
 JM:{
-"":"Iy;JE,Jz",
+"":"Iy;JE,tv",
 wR:function(a){var z,y,x,w,v
 z={}
 y=init.globalState.i2
-x=this.Jz
+x=this.tv
 w=y.t(y,x)
 if(w==null)return
 if(this.JE.gKS())return
@@ -785,7 +785,7 @@ z=this.b.JE
 if(!z.gKS()){if(this.c){y=this.a
 y.a=H.Hh(y.a)}z.FL(this.a.a)}}},
 ns:{
-"":"Iy;Ws,bv,Jz",
+"":"Iy;Ws,bv,tv",
 wR:function(a){var z,y,x
 z=H.t0(H.B7(["command","message","port",this,"msg",a],P.L5(null,null,null,null,null)))
 if(init.globalState.EF===!0){init.globalState.vd.toString
@@ -795,11 +795,11 @@ if(x!=null)x.postMessage(z)}},
 n:function(a,b){var z
 if(b==null)return!1
 z=J.x(b)
-return typeof b==="object"&&b!==null&&!!z.$isns&&J.de(this.Ws,b.Ws)&&J.de(this.Jz,b.Jz)&&J.de(this.bv,b.bv)},
+return typeof b==="object"&&b!==null&&!!z.$isns&&J.de(this.Ws,b.Ws)&&J.de(this.tv,b.tv)&&J.de(this.bv,b.bv)},
 gtU:function(a){var z,y,x
 z=this.Ws
 if(typeof z!=="number")return z.O()
-y=this.Jz
+y=this.tv
 if(typeof y!=="number")return y.O()
 x=this.bv
 if(typeof x!=="number")return H.s(x)
@@ -835,13 +835,13 @@ this.da=z
 this.vl.bY=z.ght(z)}},
 Bj:{
 "":"Tf;CN,iq",
-aC:function(a){if(!!a.$isJM)return["sendport",init.globalState.oL,a.Jz,a.JE.gx6()]
-if(!!a.$isns)return["sendport",a.Ws,a.Jz,a.bv]
+aC:function(a){if(!!a.$isJM)return["sendport",init.globalState.oL,a.tv,a.JE.gx6()]
+if(!!a.$isns)return["sendport",a.Ws,a.tv,a.bv]
 throw H.b("Illegal underlying port "+H.d(a))}},
 NO:{
 "":"oo;iq",
-aC:function(a){if(!!a.$isJM)return new H.JM(a.JE,a.Jz)
-if(!!a.$isns)return new H.ns(a.Ws,a.bv,a.Jz)
+aC:function(a){if(!!a.$isJM)return new H.JM(a.JE,a.tv)
+if(!!a.$isns)return new H.ns(a.Ws,a.bv,a.tv)
 throw H.b("Illegal underlying port "+H.d(a))}},
 II:{
 "":"AP;RZ",
@@ -963,7 +963,7 @@ switch(z.t(a,0)){case"ref":y=z.t(a,1)
 z=this.RZ
 return z.t(z,y)
 case"list":return this.Dj(a)
-case"map":return this.tv(a)
+case"map":return this.GD(a)
 case"sendport":return this.Vf(a)
 default:return this.PR(a)}},
 Dj:function(a){var z,y,x,w,v
@@ -978,7 +978,7 @@ if(typeof w!=="number")return H.s(w)
 v=0
 for(;v<w;++v)z.u(x,v,this.XE(z.t(x,v)))
 return x},
-tv:function(a){var z,y,x,w,v,u,t,s
+GD:function(a){var z,y,x,w,v,u,t,s
 z=P.L5(null,null,null,null,null)
 y=J.U6(a)
 x=y.t(a,1)
@@ -5604,7 +5604,7 @@ call$1:function(a){return J.UQ(this.b,a)}}}],["","file:///Users/vanya/projects/d
 "":"",
 Iq:[function(){G.cb()},"call$0","eE",0,0,1],
 Rj:{
-"":"a;rA,yM,VE,Xa,tE,Eb,hV,Yo,CB,re,Uh,Gg,bh,LJ",
+"":"a;rA,yM,VE,Jz,Xa,tE,Eb,hV,Yo,CB,re,Uh,Gg,bh,LJ,Dp",
 Bt:function(){var z,y,x,w,v
 w=this.bh
 z=window.localStorage.getItem(w)
@@ -5614,6 +5614,11 @@ y=P.BS(z,x.gN5())
 J.kH(y,new G.ZS(this))}catch(v){H.Ru(v)
 J.V1(window.localStorage,w)}if(J.de(J.q8(y),0))y=[0,1,2,3,4]
 S.YP(this.rA,y)},
+Sf:function(){var z,y,x,w
+z=window.localStorage.getItem(this.Dp)
+y=20
+if(z!=null)try{y=H.BU(z,null,null)}catch(x){H.Ru(x)}for(w=0;w<J.q8(J.Wy(this.Jz));++w)if(J.de(J.Vm(J.UQ(J.Wy(this.Jz),w)),J.AG(y))){J.h6(J.UQ(J.Wy(this.Jz),w),!0)
+break}this.Yo.VO.Rw(y)},
 Ey:function(){var z,y,x
 z=window.localStorage.getItem(this.LJ)
 y=3
@@ -5625,10 +5630,18 @@ window.localStorage.setItem(this.Gg,J.Vm(this.yM))
 z=J.C0(J.DP(this.rA),new G.RY())
 y=z.br(z)
 window.localStorage.setItem(this.bh,P.TC(y,null))},
+l8:function(){var z,y
+z=H.BU(J.Vm(this.VE),null,null)
+this.re=z
+window.localStorage.setItem(this.LJ,J.AG(J.xH(z,1)))
+y=J.WB(J.AG(this.re),".5em")
+J.vP(this.tE.style,y)
+J.vP(this.Eb.style,y)},
 O9:function(a){var z=!a
 J.zL(this.rA,z)
 J.zL(this.yM,z)
-J.zL(this.VE,z)},
+J.zL(this.VE,z)
+J.zL(this.Jz,z)},
 TP:function(a){this.O9(!0)
 this.Xa.focus()
 this.Xa.textContent="Start"
@@ -5659,22 +5672,17 @@ y.h(y,x.aD===x.t1?"correct":"incorrect")
 this.Eb.textContent=this.CB.t1
 A.cK(this.hV,z.TL)}y=this.CB
 if(y.Ce||y.t1.length>=y.aD.length)this.CB=z.AJ()},"call$1","gS0",2,0,29],
-l8:function(){var z,y
-z=H.BU(J.Vm(this.VE),null,null)
-this.re=z
-window.localStorage.setItem(this.LJ,J.AG(J.xH(z,1)))
-y=J.WB(J.AG(this.re),".5em")
-J.vP(this.tE.style,y)
-J.vP(this.Eb.style,y)},
 Sz:function(){var z,y,x
 this.rA=document.querySelector("#level")
 this.yM=document.querySelector("#alphabet")
 this.VE=document.querySelector("#letterCount")
+this.Jz=document.querySelector("#speed")
 this.Xa=document.querySelector("#startStopButton")
 this.tE=document.querySelector("#playedLetter")
 this.Eb=document.querySelector("#typedLetter")
 this.hV=document.querySelector("#letterChart")
 this.Bt()
+this.Sf()
 z=window.localStorage.getItem(this.Gg)
 if(z==null)z=S.kg(this.rA)
 J.Fc(this.yM,z)
@@ -5685,18 +5693,22 @@ y.toString
 x=C.mt.Ph
 y=H.VM(new W.Cq(y,x,!1),[null])
 H.VM(new W.xC(0,y.uv,y.Ph,W.VF(new G.Pf(this)),y.Sg),[H.Kp(y,0)]).Zz()
-y=this.yM
+y=this.Jz
 y.toString
 y=H.VM(new W.Cq(y,x,!1),[null])
 H.VM(new W.xC(0,y.uv,y.Ph,W.VF(new G.nK(this)),y.Sg),[H.Kp(y,0)]).Zz()
+y=this.yM
+y.toString
+y=H.VM(new W.Cq(y,x,!1),[null])
+H.VM(new W.xC(0,y.uv,y.Ph,W.VF(new G.Uw(this)),y.Sg),[H.Kp(y,0)]).Zz()
 y=this.VE
 y.toString
 x=H.VM(new W.Cq(y,x,!1),[null])
-H.VM(new W.xC(0,x.uv,x.Ph,W.VF(new G.Uw(this)),x.Sg),[H.Kp(x,0)]).Zz()
+H.VM(new W.xC(0,x.uv,x.Ph,W.VF(new G.Zu(this)),x.Sg),[H.Kp(x,0)]).Zz()
 x=this.Xa
 x.toString
 x=H.VM(new W.Cq(x,C.T1.Ph,!1),[null])
-H.VM(new W.xC(0,x.uv,x.Ph,W.VF(new G.Zu(this)),x.Sg),[H.Kp(x,0)]).Zz()
+H.VM(new W.xC(0,x.uv,x.Ph,W.VF(new G.h4(this)),x.Sg),[H.Kp(x,0)]).Zz()
 x=H.VM(new W.RO(document,C.Z4.Ph,!1),[null])
 H.VM(new W.xC(0,x.uv,x.Ph,W.VF(this.gS0(this)),x.Sg),[H.Kp(x,0)]).Zz()
 this.Xa.focus()},
@@ -5706,7 +5718,7 @@ z.Rw(20)
 z=new G.jk(1.5,0.5,C.pr,z,null,null,null,"letterDelayEMA",null)
 T.AX()
 z.TL=z.Km()
-z=new G.Rj(null,null,null,null,null,null,null,z,null,1,!1,"alphabet","levelSelect","trainerWidth")
+z=new G.Rj(null,null,null,null,null,null,null,null,z,null,1,!1,"alphabet","levelSelect","trainerWidth","wpm")
 z.Sz()
 return z}}},
 Pf:{
@@ -5714,16 +5726,24 @@ Pf:{
 call$1:function(a){return this.a.JS()}},
 nK:{
 "":"Tp:17;b",
-call$1:function(a){var z=this.b
-window.localStorage.setItem(z.Gg,J.Vm(z.yM))
+call$1:function(a){var z,y
+z=this.b
+y=H.BU(J.Vm(z.Jz),null,null)
+window.localStorage.setItem(z.Dp,J.AG(y))
+z.Yo.VO.Rw(y)
 return}},
 Uw:{
 "":"Tp:17;c",
-call$1:function(a){return this.c.l8()}},
+call$1:function(a){var z=this.c
+window.localStorage.setItem(z.Gg,J.Vm(z.yM))
+return}},
 Zu:{
 "":"Tp:17;d",
+call$1:function(a){return this.d.l8()}},
+h4:{
+"":"Tp:17;e",
 call$1:function(a){var z,y
-z=this.d
+z=this.e
 if(!z.Uh){z.O9(!1)
 z.Xa.blur()
 z.Xa.textContent="Stop"
@@ -5831,7 +5851,7 @@ call$0:function(){return 10}}},1],["morseaudio","file:///Users/vanya/projects/da
 GE:{
 "":"a;eo,pm,hx,lv,VJ,lR,WC,zB,dI,iV",
 QQ:function(a,b){var z,y,x,w,v,u,t,s
-this.WC=a
+this.WC=J.Oq(a)
 z=T.Qu(b)
 y=z.length
 x=(y-1)*this.lv
@@ -5886,10 +5906,10 @@ x.stop(o+z)
 z=this.zB
 if(typeof z!=="number")return H.s(z)
 return new N.Ke(u,t)},
-static:{"":"eU,cw,ry"}},
+static:{"":"RG,eU,cw,ry"}},
 wJ:{
 "":"Tp:17;",
-call$1:function(a){return(1-Math.cos(a/10*3.141592653589793))/2}}}],["morsecode","file:///Users/vanya/projects/dart/walrus/lib/morsecode.dart",,T,{
+call$1:function(a){return(1-Math.cos(a/6*3.141592653589793))/2}}}],["morsecode","file:///Users/vanya/projects/dart/walrus/lib/morsecode.dart",,T,{
 "":"",
 AX:function(){var z,y,x,w
 if($.WG!=null)return
@@ -6442,7 +6462,7 @@ return y})
 I.$lazy($,"_toStringVisiting","xg","xb",function(){return P.zM(null)})
 I.$lazy($,"_toStringList","yu","tw",function(){return[]})
 I.$lazy($,"levels","fK","iW",function(){return["KM","RS","UA","PT","LO","WI",".N","JE","F0","Y,","VG","5/","Q9","ZH","38","B?","42","7C","1D","6X"]})
-I.$lazy($,"ramp","eU","DC",function(){return P.dH(11,new S.wJ(),!0,J.VA)})
+I.$lazy($,"ramp","eU","DC",function(){return P.dH(7,new S.wJ(),!0,J.VA)})
 I.$lazy($,"rampUp","cw","iA",function(){return new Float32Array(P.XF($.DC()))})
 I.$lazy($,"rampDown","ry","yO",function(){var z=$.DC()
 z.toString
@@ -7323,11 +7343,11 @@ $desc=$collectedClasses.fq
 if($desc instanceof Array)$desc=$desc[1]
 fq.prototype=$desc
 fq.prototype.slz=function(receiver,v){return receiver.disabled=v}
-function h4(){}h4.builtin$cls="h4"
-if(!"name" in h4)h4.name="h4"
-$desc=$collectedClasses.h4
+function i9(){}i9.builtin$cls="i9"
+if(!"name" in i9)i9.name="i9"
+$desc=$collectedClasses.i9
 if($desc instanceof Array)$desc=$desc[1]
-h4.prototype=$desc
+i9.prototype=$desc
 function UK(){}UK.builtin$cls="UK"
 if(!"name" in UK)UK.name="UK"
 $desc=$collectedClasses.UK
@@ -8279,8 +8299,8 @@ if(!"name" in Iy)Iy.name="Iy"
 $desc=$collectedClasses.Iy
 if($desc instanceof Array)$desc=$desc[1]
 Iy.prototype=$desc
-function JM(JE,Jz){this.JE=JE
-this.Jz=Jz}JM.builtin$cls="JM"
+function JM(JE,tv){this.JE=JE
+this.tv=tv}JM.builtin$cls="JM"
 if(!"name" in JM)JM.name="JM"
 $desc=$collectedClasses.JM
 if($desc instanceof Array)$desc=$desc[1]
@@ -8292,9 +8312,9 @@ if(!"name" in Ua)Ua.name="Ua"
 $desc=$collectedClasses.Ua
 if($desc instanceof Array)$desc=$desc[1]
 Ua.prototype=$desc
-function ns(Ws,bv,Jz){this.Ws=Ws
+function ns(Ws,bv,tv){this.Ws=Ws
 this.bv=bv
-this.Jz=Jz}ns.builtin$cls="ns"
+this.tv=tv}ns.builtin$cls="ns"
 if(!"name" in ns)ns.name="ns"
 $desc=$collectedClasses.ns
 if($desc instanceof Array)$desc=$desc[1]
@@ -9721,9 +9741,10 @@ if(!"name" in SX)SX.name="SX"
 $desc=$collectedClasses.SX
 if($desc instanceof Array)$desc=$desc[1]
 SX.prototype=$desc
-function Rj(rA,yM,VE,Xa,tE,Eb,hV,Yo,CB,re,Uh,Gg,bh,LJ){this.rA=rA
+function Rj(rA,yM,VE,Jz,Xa,tE,Eb,hV,Yo,CB,re,Uh,Gg,bh,LJ,Dp){this.rA=rA
 this.yM=yM
 this.VE=VE
+this.Jz=Jz
 this.Xa=Xa
 this.tE=tE
 this.Eb=Eb
@@ -9734,7 +9755,8 @@ this.re=re
 this.Uh=Uh
 this.Gg=Gg
 this.bh=bh
-this.LJ=LJ}Rj.builtin$cls="Rj"
+this.LJ=LJ
+this.Dp=Dp}Rj.builtin$cls="Rj"
 if(!"name" in Rj)Rj.name="Rj"
 $desc=$collectedClasses.Rj
 if($desc instanceof Array)$desc=$desc[1]
@@ -9759,6 +9781,11 @@ if(!"name" in Zu)Zu.name="Zu"
 $desc=$collectedClasses.Zu
 if($desc instanceof Array)$desc=$desc[1]
 Zu.prototype=$desc
+function h4(e){this.e=e}h4.builtin$cls="h4"
+if(!"name" in h4)h4.name="h4"
+$desc=$collectedClasses.h4
+if($desc instanceof Array)$desc=$desc[1]
+h4.prototype=$desc
 function ZS(a){this.a=a}ZS.builtin$cls="ZS"
 if(!"name" in ZS)ZS.name="ZS"
 $desc=$collectedClasses.ZS
@@ -9864,4 +9891,4 @@ if(!"name" in Ke)Ke.name="Ke"
 $desc=$collectedClasses.Ke
 if($desc instanceof Array)$desc=$desc[1]
 Ke.prototype=$desc
-return[qE,Gh,rK,fY,Mr,lJ,ct,nB,i3,it,Az,QP,IF,jr,Ny,Kh,TK,Y5,Gc,OM,QQ,fW,y4,d7,Um,oJ,DG,HA,vH,xO,Em,NW,rV,K4,QF,hs,Wq,cm,Nh,cv,Fs,Ty,ea,D0,as,dU,Aa,u5,Yu,iG,jP,Ax,xf,xn,Vb,QH,ST,X2,tb,pA,Mi,HL,In,wP,eP,AL,Og,M6,El,mC,SV,aB,fJ,Ih,D8,Vh,rC,ZY,cx,Ee,Qb,PG,F3,xI,Aj,oU,eY,KV,BH,KY,G7,l9,Ql,wL,bP,FH,SN,HD,ni,rR,qj,nC,KR,ew,fs,bX,A6,MC,iQ,j2,Ea,lp,kd,I0,yN,Cp,ua,mG,Ul,KK,As,ii,fq,h4,UK,GI,kI,Iv,BT,yY,Zb,FB,xV,e1,Pe,y6,RH,Kn,Z2,w6,BR,vw,aG,J6,Oi,UM,WS,r0,jf,yp,c1,JU,Nf,Nc,rj,rh,Zv,nA,yK,Dh,ZJ,mU,eZ,IT,JY,kx,nV,GK,D6,DQ,Sm,xL,es,jw,lv,pf,nQ,Tx,zo,wf,hq,ih,Nd,zp,Xu,lu,tk,me,oB,Ah,EI,MI,Ub,bM,eW,Qy,ju,tB,N9,BA,zU,rE,CC,PQ,uz,hB,p8,AD,Gr,tc,GH,To,NJ,qI,vt,M0,Lx,f6,d5,hy,r8,aS,CG,UN,MT,Rk,Eo,YS,ox,ZD,rD,wD,BD,vR,j8,Ja,zI,cB,LQ,yR,HP,fa,l4,Et,QS,Pi,qO,xt,wx,P0,WK,p2,vN,rO,xl,XN,Jm,Xr,Gn,YR,Sl,Jo,Qm,I2,HY,vm,oI,cQ,rF,X6,ZX,hn,Pz,zt,F0,FK,Pu,kn,YE,Ue,Tm,is,Q,P,im,VA,O,Qe,PK,JO,O2,aX,cC,RA,IY,JH,jl,Iy,JM,Ua,ns,yo,fc,Bj,NO,II,fP,X1,HU,oo,OW,Tf,AP,yH,FA,Av,WU,LP,oy,hY,XR,FD,Zr,W0,az,vV,Am,XO,dr,TL,KX,uZ,OQ,Tp,Bp,v,Eq,lb,tD,hJ,cu,dC,wN,VX,tQ,hg,TW,rQ,tG,G4,n6,L0,Yz,tj,aq,aL,a7,i1,xy,MH,A8,U5,SO,SU,Qr,w2,iK,Ca,b8,vs,da,xw,dm,rH,mi,jb,wB,Gv,qh,lz,Rl,Jb,M4,B5,PI,MO,Kd,UO,Bc,VT,Fj,q1,Zz,ly,MF,u8,yU,nP,KA,qB,ez,fI,LV,dp,B3,CR,Qk,v1,uR,fZ,TF,K5,Cg,Hs,pK,eM,R8,k6,oi,fG,EQ,YB,a1,ey,xd,v6,db,i5,ui,jg,YO,oz,b6,rb,zQ,Yp,u3,mW,ar,lD,ZQ,Sw,o0,JC,f1,wI,Ud,K8,Mx,Sh,IH,WF,fR,iP,a6,P7,DW,Ge,LK,AT,bJ,ub,ds,lj,UV,VS,t7,HG,aE,kM,An,c8,a,Od,mE,yt,ys,Rn,wv,BV,id,VG,wz,B1,dx,ec,e7,hm,x5,S6,rp,cX,DE,nj,HR,I4,Fk,RO,Cq,xC,Pb,W9,O7,mg,ue,GG,Os,Rd,Jn,P2,Pr,dM,PN,kP,D7,Zf,GS,VB,Tb,xP,pc,kJ,pU,JX,WM,SX,Rj,Pf,nK,Uw,Zu,ZS,RY,tp,jk,r6,ze,GE,wJ,mo,EA,Ke]}
+return[qE,Gh,rK,fY,Mr,lJ,ct,nB,i3,it,Az,QP,IF,jr,Ny,Kh,TK,Y5,Gc,OM,QQ,fW,y4,d7,Um,oJ,DG,HA,vH,xO,Em,NW,rV,K4,QF,hs,Wq,cm,Nh,cv,Fs,Ty,ea,D0,as,dU,Aa,u5,Yu,iG,jP,Ax,xf,xn,Vb,QH,ST,X2,tb,pA,Mi,HL,In,wP,eP,AL,Og,M6,El,mC,SV,aB,fJ,Ih,D8,Vh,rC,ZY,cx,Ee,Qb,PG,F3,xI,Aj,oU,eY,KV,BH,KY,G7,l9,Ql,wL,bP,FH,SN,HD,ni,rR,qj,nC,KR,ew,fs,bX,A6,MC,iQ,j2,Ea,lp,kd,I0,yN,Cp,ua,mG,Ul,KK,As,ii,fq,i9,UK,GI,kI,Iv,BT,yY,Zb,FB,xV,e1,Pe,y6,RH,Kn,Z2,w6,BR,vw,aG,J6,Oi,UM,WS,r0,jf,yp,c1,JU,Nf,Nc,rj,rh,Zv,nA,yK,Dh,ZJ,mU,eZ,IT,JY,kx,nV,GK,D6,DQ,Sm,xL,es,jw,lv,pf,nQ,Tx,zo,wf,hq,ih,Nd,zp,Xu,lu,tk,me,oB,Ah,EI,MI,Ub,bM,eW,Qy,ju,tB,N9,BA,zU,rE,CC,PQ,uz,hB,p8,AD,Gr,tc,GH,To,NJ,qI,vt,M0,Lx,f6,d5,hy,r8,aS,CG,UN,MT,Rk,Eo,YS,ox,ZD,rD,wD,BD,vR,j8,Ja,zI,cB,LQ,yR,HP,fa,l4,Et,QS,Pi,qO,xt,wx,P0,WK,p2,vN,rO,xl,XN,Jm,Xr,Gn,YR,Sl,Jo,Qm,I2,HY,vm,oI,cQ,rF,X6,ZX,hn,Pz,zt,F0,FK,Pu,kn,YE,Ue,Tm,is,Q,P,im,VA,O,Qe,PK,JO,O2,aX,cC,RA,IY,JH,jl,Iy,JM,Ua,ns,yo,fc,Bj,NO,II,fP,X1,HU,oo,OW,Tf,AP,yH,FA,Av,WU,LP,oy,hY,XR,FD,Zr,W0,az,vV,Am,XO,dr,TL,KX,uZ,OQ,Tp,Bp,v,Eq,lb,tD,hJ,cu,dC,wN,VX,tQ,hg,TW,rQ,tG,G4,n6,L0,Yz,tj,aq,aL,a7,i1,xy,MH,A8,U5,SO,SU,Qr,w2,iK,Ca,b8,vs,da,xw,dm,rH,mi,jb,wB,Gv,qh,lz,Rl,Jb,M4,B5,PI,MO,Kd,UO,Bc,VT,Fj,q1,Zz,ly,MF,u8,yU,nP,KA,qB,ez,fI,LV,dp,B3,CR,Qk,v1,uR,fZ,TF,K5,Cg,Hs,pK,eM,R8,k6,oi,fG,EQ,YB,a1,ey,xd,v6,db,i5,ui,jg,YO,oz,b6,rb,zQ,Yp,u3,mW,ar,lD,ZQ,Sw,o0,JC,f1,wI,Ud,K8,Mx,Sh,IH,WF,fR,iP,a6,P7,DW,Ge,LK,AT,bJ,ub,ds,lj,UV,VS,t7,HG,aE,kM,An,c8,a,Od,mE,yt,ys,Rn,wv,BV,id,VG,wz,B1,dx,ec,e7,hm,x5,S6,rp,cX,DE,nj,HR,I4,Fk,RO,Cq,xC,Pb,W9,O7,mg,ue,GG,Os,Rd,Jn,P2,Pr,dM,PN,kP,D7,Zf,GS,VB,Tb,xP,pc,kJ,pU,JX,WM,SX,Rj,Pf,nK,Uw,Zu,h4,ZS,RY,tp,jk,r6,ze,GE,wJ,mo,EA,Ke]}

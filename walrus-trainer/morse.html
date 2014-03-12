@@ -27,13 +27,24 @@
           <option value="4" label="4"></option>
           <option value="5" label="5"></option>
         </select>
+        <h2>Speed (WPM)</h2>
+        <select id="speed" name="speed" required>
+          <option value="18" label="18"></option>
+          <option value="20" label="20" selected></option>
+          <option value="22" label="22"></option>
+          <option value="24" label="24"></option>
+          <option value="26" label="26"></option>
+          <option value="28" label="28"></option>
+          <option value="30" label="30"></option>
+          <option value="35" label="35"></option>
+          <option value="40" label="40"></option>
+        </select>
       </div>
       <div id="trainer">
         <button id="startStopButton">Start</button>
         <div id="trainingUI">
           <div id="playedLetter"></div>
           <div id="typedLetter"></div>
-          <div id="tardiness"></div>
         </div>
       </div>
       <div id="letterChart" style="display: none;"><div></div></div>
@@ -50,6 +61,7 @@
       <div id="updates">
         <h2>Recent updates</h2>
         <ul>
+          <li>2014-03-11 Added speed setting.</li>
           <li>2014-03-09 Settings and letter progress are now saved to local
               storage.</li>
           <li>2014-03-09 Fixed letter scoring for 2-5 character sequences
@@ -66,8 +78,6 @@
       <div id="bugs">
         <h2>Known issues</h2>
         <ul>
-          <li>Speed is fixed to 20&nbsp;WPM, frequency is fixed to 700&nbsp;Hz.
-              This is easy to fix, but there are more interesting things to do.</li>
           <li>UI is not nice.</li>
         </ul>
       </div>
