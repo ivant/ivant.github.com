@@ -5,16 +5,25 @@ body {
   line-height: 1.2em;
   margin: 15px;
   background: #20201a;
+  color: #eee;
 }
 
 h1, h2, p {
-  color: #eee;
 }
 
 #levelSidebar > h2, #alphabetBox > h2, #trainer > h2 {
   text-align: center;
 }
 
+#alphabetBox div {
+  margin-bottom: 0.5em;
+}
+
+select, input {
+  margin-left: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
 
 #levelSidebar > h2:first-child, #alphabetBox > h2:first-child, #trainer > h2:first-child {
   margin-top: 0;

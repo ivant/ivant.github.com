@@ -13,32 +13,45 @@
 
     <div style="display:flex;">
       <div id="levelSidebar">
-        <h2>Level</h2>
-        <select id="level" name="level" required multiple></select>
+        <label>Level:<br/>
+          <select id="level" name="level" required multiple></select>
+        </label>
       </div>
       <div id="alphabetBox">
-        <h2>Alphabet</h2>
-        <input id="alphabet" type="text" name="alphabet" size="40">
-        <h2>Letter count</h2>
-        <select id="letterCount" name="letterCount" required>
-          <option value="1" label="1"></option>
-          <option value="2" label="2" selected></option>
-          <option value="3" label="3"></option>
-          <option value="4" label="4"></option>
-          <option value="5" label="5"></option>
-        </select>
-        <h2>Speed (WPM)</h2>
-        <select id="speed" name="speed" required>
-          <option value="18" label="18"></option>
-          <option value="20" label="20" selected></option>
-          <option value="22" label="22"></option>
-          <option value="24" label="24"></option>
-          <option value="26" label="26"></option>
-          <option value="28" label="28"></option>
-          <option value="30" label="30"></option>
-          <option value="35" label="35"></option>
-          <option value="40" label="40"></option>
-        </select>
+        <div>
+          <label>
+            Alphabet:<br/>
+            <input id="alphabet" type="text" name="alphabet" size="40">
+          </label>
+        </div>
+        <div>
+          <label>
+            Letter count:
+            <select id="letterCount" name="letterCount" required>
+              <option value="1" label="1"></option>
+              <option value="2" label="2" selected></option>
+              <option value="3" label="3"></option>
+              <option value="4" label="4"></option>
+              <option value="5" label="5"></option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>
+            Speed (WPM):
+            <select id="speed" name="speed" required>
+              <option value="18" label="18"></option>
+              <option value="20" label="20" selected></option>
+              <option value="22" label="22"></option>
+              <option value="24" label="24"></option>
+              <option value="26" label="26"></option>
+              <option value="28" label="28"></option>
+              <option value="30" label="30"></option>
+              <option value="35" label="35"></option>
+              <option value="40" label="40"></option>
+            </select>
+          </label>
+        </div>
       </div>
       <div id="trainer">
         <button id="startStopButton">Start</button>
@@ -61,23 +74,24 @@
       <div id="updates">
         <h2>Recent updates</h2>
         <ul>
-          <li>2014-03-11 Added speed setting.</li>
-          <li>2014-03-09 Settings and letter progress are now saved to local
-              storage.</li>
+          <li>2014-03-11 Added speed setting. Small cosmetic changes.</li>
           <li>2014-03-09 Fixed letter scoring for 2-5 character sequences
-              mode.</li>
-          <li>2014-03-07 Added 'Recent updates' and 'Known issues'
-              sections.</li>
-          <li>2014-03-07 Added letter chart.</li>
-          <li>2014-03-05 Characters are shown when they are typed,
-              not at the end of the sequence.</li>
-          <li>2014-03-05 Added character sequences longer than one letter.</li>
+              mode. Settings and letter progress are now saved to local
+              storage.</li>
+          <li>2014-03-07 Added letter chart. Added 'Recent updates' and 'Known
+              issues' sections.</li>
+          <li>2014-03-05 Added character sequences longer than one letter.
+              Characters are shown when they are typed, not at the end of the
+              sequence.</li>
           <li>2014-03-03 Published the initial version.</li>
         </ul>
       </div>
       <div id="bugs">
         <h2>Known issues</h2>
         <ul>
+          <li>All guessed letters are marked as incorrect, even if some are
+              correct. Scoring doesn't penalize the correctly guessed letters
+              though.</li>
           <li>UI is not nice.</li>
         </ul>
       </div>

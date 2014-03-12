@@ -5636,7 +5636,9 @@ this.re=z
 window.localStorage.setItem(this.LJ,J.AG(J.xH(z,1)))
 y=J.WB(J.AG(this.re),".5em")
 J.vP(this.tE.style,y)
-J.vP(this.Eb.style,y)},
+J.vP(this.Eb.style,y)
+this.tE.textContent=""
+this.Eb.textContent=""},
 O9:function(a){var z=!a
 J.zL(this.rA,z)
 J.zL(this.yM,z)
@@ -5661,16 +5663,17 @@ J.pP(this.Eb).Ex(["correct","incorrect"])
 y=this.CB
 y=y.Ce||y.t1.length>=y.aD.length
 x=this.tE
-if(!y){J.FI(x.style,"#888")
-y=this.Eb
-x=this.CB.t1
-y.textContent=x+C.Nm.eC(P.O8(J.xH(this.re,x.length),"\u00b7",J.O))}else{x.style.removeProperty("color")
+if(!y)J.FI(x.style,"#888")
+else{x.style.removeProperty("color")
 this.tE.textContent=this.CB.aD
 y=J.pP(this.Eb)
 x=this.CB
-y.h(y,x.aD===x.t1?"correct":"incorrect")
-this.Eb.textContent=this.CB.t1
-A.cK(this.hV,z.TL)}y=this.CB
+y.h(y,x.aD===x.t1?"correct":"incorrect")}y=this.Eb
+x=this.CB.t1
+y.textContent=x+C.Nm.eC(P.O8(J.xH(this.re,x.length),"\u00b7",J.O))
+y=this.CB
+if(y.Ce||y.t1.length>=y.aD.length)A.cK(this.hV,z.TL)
+y=this.CB
 if(y.Ce||y.t1.length>=y.aD.length)this.CB=z.AJ()},"call$1","gS0",2,0,29],
 Sz:function(){var z,y,x
 this.rA=document.querySelector("#level")
@@ -5748,6 +5751,8 @@ if(!z.Uh){z.O9(!1)
 z.Xa.blur()
 z.Xa.textContent="Stop"
 z.Uh=!0
+z.tE.textContent=""
+z.Eb.textContent=""
 y=z.Yo
 y.CC(J.Vm(z.yM))
 y.re=z.re
