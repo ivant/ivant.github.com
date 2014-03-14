@@ -1212,7 +1212,7 @@ $.mJ=x}x=y+H.d(x)+","+w+");"
 y=$.yj
 $.yj=J.WB(y,1)
 return new Function("F",x+H.d(y)+"}")(a)}else return H.vq(z,a)},
-Zq:function(a,b,c){var z,y
+Z4:function(a,b,c){var z,y
 z=H.DV
 y=H.yS
 switch(a){case 0:throw H.b(H.Ef("Intercepted function with no arguments."))
@@ -1226,7 +1226,7 @@ default:return function(f,s,r,a){return function(){a=[r(this)];Array.prototype.p
 Hf:function(a){var z,y,x,w,v
 z=a.$stubName
 y=a.length
-if(typeof dart_precompiled=="function")return H.Zq(y,z,a)
+if(typeof dart_precompiled=="function")return H.Z4(y,z,a)
 else if(y===1){x="return this."+H.d(H.oN())+"."+z+"(this."+H.d(H.Wz())+");"
 w=$.yj
 $.yj=J.WB(w,1)
@@ -1234,7 +1234,7 @@ return new Function(x+H.d(w))}else if(1<y&&y<28){v="abcdefghijklmnopqrstuvwxyz".
 x="return function("+v+"){return this."+H.d(H.oN())+"."+z+"(this."+H.d(H.Wz())+","+v+");"
 w=$.yj
 $.yj=J.WB(w,1)
-return new Function(x+H.d(w)+"}")()}else return H.Zq(y,z,a)},
+return new Function(x+H.d(w)+"}")()}else return H.Z4(y,z,a)},
 qm:function(a,b,c,d,e,f){b.fixed$length=init
 c.fixed$length=init
 return H.fB(a,b,c,!!d,e,f)},
@@ -4283,7 +4283,7 @@ if(z==null){y=$.Ss
 $.Ss=y+1
 z="expando$key$"+y
 H.aw(this,"expando$key",z)}return z},
-static:{"":"bZ,rl,Ss"}},
+static:{"":"bZ,rt,Ss"}},
 An:{
 "":"a;"},
 c8:{
@@ -4464,7 +4464,7 @@ $isKV:true,
 "%":"HTMLInputElement"},
 HL:{
 "":"w6;",
-gHQ:function(a){return a.keyCode},
+gIG:function(a){return a.keyCode},
 $isHL:true,
 "%":"KeyboardEvent"},
 In:{
@@ -5625,33 +5625,34 @@ TP:function(a){this.O9(!0)
 this.Xa.focus()
 this.Xa.textContent="Start"
 this.Uh=!1},
-t4:[function(a,b){var z,y,x
+ut:[function(a,b){if(!this.Uh)return
+if(J.Kt(b)===27)this.TP(this)},"call$1","gHQ",2,0,29],
+a6:[function(a,b){var z,y,x,w
 if(!this.Uh)return
-switch(J.Zm(b)){case 27:this.TP(this)
-return
-case 32:z=this.Yo
-z.qj(" ")
-break
-default:z=this.Yo
-z.qj(P.Oo(b.keyCode))
-break}y=this.CB
-if(y.Ce||y.t1.length>=y.aD.length)z.w8(y)
+z=P.Oo(J.Kt(b))
+if(z===" "){y=this.Yo
+y.qj(" ")}else{y=$.WG
+if(!y.x4(y,z)){y=$.WT()
+y=y.x4(y,z)}else y=!0
+if(y){y=this.Yo
+y.qj(P.Oo(b.keyCode))}else return}x=this.CB
+if(x.Ce||x.t1.length>=x.aD.length)y.w8(x)
 J.pP(this.Eb).Ex(["correct","incorrect"])
-y=this.CB
-y=y.Ce||y.t1.length>=y.aD.length
-x=this.tE
-if(!y)J.FI(x.style,"#888")
-else{x.style.removeProperty("color")
-this.tE.textContent=this.CB.aD
-y=J.pP(this.Eb)
 x=this.CB
-y.h(y,x.aD===x.t1?"correct":"incorrect")}y=this.Eb
-x=this.CB.t1
-y.textContent=x+C.Nm.eC(P.O8(J.xH(this.re,x.length),"\u00b7",J.O))
-y=this.CB
-if(y.Ce||y.t1.length>=y.aD.length)A.cK(this.hV,z.TL)
-y=this.CB
-if(y.Ce||y.t1.length>=y.aD.length)this.CB=z.AJ()},"call$1","gS0",2,0,29],
+x=x.Ce||x.t1.length>=x.aD.length
+w=this.tE
+if(!x)J.FI(w.style,"#888")
+else{w.style.removeProperty("color")
+this.tE.textContent=this.CB.aD
+x=J.pP(this.Eb)
+w=this.CB
+x.h(x,w.aD===w.t1?"correct":"incorrect")}x=this.Eb
+w=this.CB.t1
+x.textContent=w+C.Nm.eC(P.O8(J.xH(this.re,w.length),"\u00b7",J.O))
+x=this.CB
+if(x.Ce||x.t1.length>=x.aD.length)A.cK(this.hV,y.TL)
+x=this.CB
+if(x.Ce||x.t1.length>=x.aD.length)this.CB=y.AJ()},"call$1","gUz",2,0,29],
 Sz:function(){var z,y,x
 this.rA=document.querySelector("#level")
 this.yM=document.querySelector("#alphabet")
@@ -5689,8 +5690,10 @@ x=this.Xa
 x.toString
 x=H.VM(new W.Cq(x,C.T1.Ph,!1),[null])
 H.VM(new W.xC(0,x.uv,x.Ph,W.VF(new G.h4(this)),x.Sg),[H.Kp(x,0)]).Zz()
-x=H.VM(new W.RO(document,C.Z4.Ph,!1),[null])
-H.VM(new W.xC(0,x.uv,x.Ph,W.VF(this.gS0(this)),x.Sg),[H.Kp(x,0)]).Zz()
+x=H.VM(new W.RO(document,C.rl.Ph,!1),[null])
+H.VM(new W.xC(0,x.uv,x.Ph,W.VF(this.gHQ(this)),x.Sg),[H.Kp(x,0)]).Zz()
+x=H.VM(new W.RO(document,C.fW.Ph,!1),[null])
+H.VM(new W.xC(0,x.uv,x.Ph,W.VF(this.gUz(this)),x.Sg),[H.Kp(x,0)]).Zz()
 this.Xa.focus()},
 static:{cb:function(){var z=new S.GE(null,3,1,3,7,null,null,null,700,0.1)
 z.eo=new (window.AudioContext||window.webkitAudioContext)()
@@ -6064,6 +6067,7 @@ J.IL=function(a,b,c){return J.RE(a).Fp(a,b,c)}
 J.J5=function(a,b){if(typeof a=="number"&&typeof b=="number")return a>=b
 return J.Wx(a).F(a,b)}
 J.JA=function(a,b,c){return J.rY(a).h8(a,b,c)}
+J.Kt=function(a){return J.RE(a).gIG(a)}
 J.LL=function(a){return J.Wx(a).HG(a)}
 J.Lf=function(a){return J.Wx(a).Ap(a)}
 J.MK=function(a){return J.Wx(a).a3(a)}
@@ -6097,7 +6101,6 @@ J.Wy=function(a){return J.RE(a).gbG(a)}
 J.Xi=function(a){return J.RE(a).zK(a)}
 J.Yd=function(a,b){return J.RE(a).Bf(a,b)}
 J.ZP=function(a,b){return J.RE(a).Tk(a,b)}
-J.Zm=function(a){return J.RE(a).gHQ(a)}
 J.b0=function(a){return J.RE(a).vn(a)}
 J.bl=function(a,b,c){return J.RE(a).LG(a,b,c)}
 J.bs=function(a,b){return J.RE(a).sLm(a,b)}
@@ -6146,7 +6149,8 @@ C.NU=new P.R8()
 C.RT=new P.a6(0)
 C.mt=new W.Fk("change")
 C.T1=new W.Fk("click")
-C.Z4=new W.Fk("keyup")
+C.rl=new W.Fk("keydown")
+C.fW=new W.Fk("keypress")
 C.Nm=J.Q.prototype
 C.ON=J.VA.prototype
 C.jn=J.im.prototype
@@ -6292,7 +6296,7 @@ C.RR=new B.EA("af",",","\u00a0","%","0","+","-","E","\u2030","\u221e","NaN","#,#
 C.N4=new B.EA("am",".",",","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","\u00a4#,##0.00;(\u00a4#,##0.00)","ETB")
 C.Px=new B.EA("ar","\u066b","\u066c","\u066a","\u0660","+","-","\u0627\u0633","\u0609","\u221e","\u0644\u064a\u0633\u00a0\u0631\u0642\u0645","#0.###;#0.###-","#E0","#,##0%","\u00a4\u00a0#0.00;\u00a4\u00a0#0.00-","EGP")
 C.fm=new B.EA("bg",",","\u00a0","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","#,##0.00\u00a0\u00a4","BGN")
-C.Kt=new B.EA("bn",".",",","%","\u09e6","+","-","E","\u2030","\u221e","\u09b8\u0982\u0996\u09cd\u09af\u09be\u00a0\u09a8\u09be","#,##,##0.###","#E0","#,##,##0%","#,##,##0.00\u00a4;(#,##,##0.00\u00a4)","BDT")
+C.RJ=new B.EA("bn",".",",","%","\u09e6","+","-","E","\u2030","\u221e","\u09b8\u0982\u0996\u09cd\u09af\u09be\u00a0\u09a8\u09be","#,##,##0.###","#E0","#,##,##0%","#,##,##0.00\u00a4;(#,##,##0.00\u00a4)","BDT")
 C.MZ=new B.EA("ca",",",".","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","\u00a4#,##0.00;(\u00a4#,##0.00)","EUR")
 C.Zw=new B.EA("cs",",","\u00a0","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0\u00a0%","#,##0.00\u00a0\u00a4","CZK")
 C.Vs=new B.EA("da",",",".","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0\u00a0%","#,##0.00\u00a0\u00a4","DKK")
@@ -6365,9 +6369,9 @@ C.Y1=new B.EA("vi",",",".","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.##
 C.MQ=new B.EA("zh",".",",","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","\u00a4#,##0.00;(\u00a4#,##0.00)","CNY")
 C.br=new B.EA("zh_CN",".",",","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","\u00a4#,##0.00;(\u00a4#,##0.00)","CNY")
 C.aZ=new B.EA("zh_HK",".",",","%","0","+","-","E","\u2030","\u221e","\u975e\u6578\u503c","#,##0.###","#E0","#,##0%","\u00a4#,##0.00;(\u00a4#,##0.00)","HKD")
-C.ij=new B.EA("zh_TW",".",",","%","0","+","-","E","\u2030","\u221e","\u975e\u6578\u503c","#,##0.###","#E0","#,##0%","\u00a4#,##0.00","TWD")
+C.hc=new B.EA("zh_TW",".",",","%","0","+","-","E","\u2030","\u221e","\u975e\u6578\u503c","#,##0.###","#E0","#,##0%","\u00a4#,##0.00","TWD")
 C.ig=new B.EA("zu",".",",","%","0","+","-","E","\u2030","\u221e","I-NaN","#,##0.###","#E0","#,##0%","\u00a4#,##0.00;(\u00a4#,##0.00)","ZAR")
-C.an=new H.LP(79,{af:C.RR,am:C.N4,ar:C.Px,bg:C.fm,bn:C.Kt,ca:C.MZ,cs:C.Zw,da:C.Vs,de:C.W2,de_AT:C.dT,de_CH:C.oa,el:C.B0,en:C.ZU,en_AU:C.WC,en_GB:C.mB,en_IE:C.Sc,en_IN:C.rz,en_SG:C.kl,en_US:C.Ba,en_ZA:C.Ij,es:C.f9,es_419:C.ye,et:C.vf,eu:C.uS,fa:C.RX,fi:C.ac,fil:C.Nr,fr:C.Zd,fr_CA:C.Xl,gl:C.xK,gsw:C.rv,gu:C.ik,he:C.Tv,hi:C.Yq,hr:C.mD,hu:C.c7,id:C.HO,in:C.l2,is:C.Fp,it:C.lo,iw:C.Rb,ja:C.lL,kn:C.Zo,ko:C.QC,ln:C.q0,lt:C.Ad,lv:C.Hm,ml:C.xp,mr:C.ai,ms:C.tC,mt:C.Gl,nl:C.Ap,no:C.IV,or:C.mc,pl:C.Zn,pt:C.LW,pt_BR:C.lB,pt_PT:C.cU,ro:C.CA,ru:C.pj,sk:C.Ak,sl:C.Ib,sq:C.Sg,sr:C.Ck,sv:C.OR,sw:C.V8,ta:C.Bt,te:C.Xq,th:C.rw,tl:C.pz,tr:C.UE,uk:C.RB,ur:C.pZ,vi:C.Y1,zh:C.MQ,zh_CN:C.br,zh_HK:C.aZ,zh_TW:C.ij,zu:C.ig},C.UZ)
+C.an=new H.LP(79,{af:C.RR,am:C.N4,ar:C.Px,bg:C.fm,bn:C.RJ,ca:C.MZ,cs:C.Zw,da:C.Vs,de:C.W2,de_AT:C.dT,de_CH:C.oa,el:C.B0,en:C.ZU,en_AU:C.WC,en_GB:C.mB,en_IE:C.Sc,en_IN:C.rz,en_SG:C.kl,en_US:C.Ba,en_ZA:C.Ij,es:C.f9,es_419:C.ye,et:C.vf,eu:C.uS,fa:C.RX,fi:C.ac,fil:C.Nr,fr:C.Zd,fr_CA:C.Xl,gl:C.xK,gsw:C.rv,gu:C.ik,he:C.Tv,hi:C.Yq,hr:C.mD,hu:C.c7,id:C.HO,in:C.l2,is:C.Fp,it:C.lo,iw:C.Rb,ja:C.lL,kn:C.Zo,ko:C.QC,ln:C.q0,lt:C.Ad,lv:C.Hm,ml:C.xp,mr:C.ai,ms:C.tC,mt:C.Gl,nl:C.Ap,no:C.IV,or:C.mc,pl:C.Zn,pt:C.LW,pt_BR:C.lB,pt_PT:C.cU,ro:C.CA,ru:C.pj,sk:C.Ak,sl:C.Ib,sq:C.Sg,sr:C.Ck,sv:C.OR,sw:C.V8,ta:C.Bt,te:C.Xq,th:C.rw,tl:C.pz,tr:C.UE,uk:C.RB,ur:C.pZ,vi:C.Y1,zh:C.MQ,zh_CN:C.br,zh_HK:C.aZ,zh_TW:C.hc,zu:C.ig},C.UZ)
 C.t5=W.BH.prototype
 C.Yb=H.Kx('ue')
 C.Yy=H.Kx('Jn')
