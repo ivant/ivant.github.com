@@ -5589,7 +5589,7 @@ y=[]
 if(z!=null)try{x=new P.Mx(null)
 y=P.BS(z,x.gN5())
 J.kH(y,new G.ZS(this))}catch(v){H.Ru(v)
-J.V1(window.localStorage,w)}if(J.de(J.q8(y),0))y=[0,1,2,3,4]
+J.V1(window.localStorage,w)}if(J.de(J.q8(y),0))y=$.mL()
 S.YP(this.rA,y)},
 Sf:function(){var z,y,x,w
 z=window.localStorage.getItem(this.Dp)
@@ -5598,7 +5598,7 @@ if(z!=null)try{y=H.BU(z,null,null)}catch(x){H.Ru(x)}for(w=0;w<J.q8(J.Wy(this.Jz)
 break}this.Yo.VO.Rw(y)},
 Ey:function(){var z,y,x
 z=window.localStorage.getItem(this.LJ)
-y=3
+y=0
 if(z!=null)try{y=H.BU(z,null,null)}catch(x){H.Ru(x)}J.h6(J.UQ(J.Wy(this.VE),J.m4(this.VE)),!1)
 J.h6(J.UQ(J.Wy(this.VE),y),!0)},
 JS:function(){var z,y
@@ -5695,7 +5695,7 @@ H.VM(new W.xC(0,x.uv,x.Ph,W.VF(this.gHQ(this)),x.Sg),[H.Kp(x,0)]).Zz()
 x=H.VM(new W.RO(document,C.fW.Ph,!1),[null])
 H.VM(new W.xC(0,x.uv,x.Ph,W.VF(this.gUz(this)),x.Sg),[H.Kp(x,0)]).Zz()
 this.Xa.focus()},
-static:{cb:function(){var z=new S.GE(null,3,1,3,7,null,null,null,700,0.1)
+static:{"":"AI,rs,Kw",cb:function(){var z=new S.GE(null,3,1,3,7,null,null,null,700,0.1)
 z.eo=new (window.AudioContext||window.webkitAudioContext)()
 z.Rw(20)
 z=new G.jk(1.5,0.5,z,null,null,null,"letterDelayEMA",null)
@@ -6458,6 +6458,7 @@ return y})
 I.$lazy($,"_toStringVisiting","xg","xb",function(){return P.zM(null)})
 I.$lazy($,"_toStringList","yu","tw",function(){return[]})
 I.$lazy($,"levels","fK","iW",function(){return["KM","RS","UA","PT","LO","WI",".N","JE","F0","Y,","VG","5/","Q9","ZH","38","B?","42","7C","1D","6X"]})
+I.$lazy($,"DEFAULT_LEVEL_SELECT","AI","mL",function(){return[0]})
 I.$lazy($,"ramp","eU","DC",function(){return P.dH(7,new S.wJ(),!0,J.VA)})
 I.$lazy($,"rampUp","cw","iA",function(){return new Float32Array(P.XF($.DC()))})
 I.$lazy($,"rampDown","ry","yO",function(){var z=$.DC()
