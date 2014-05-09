@@ -50,15 +50,17 @@
         ctx.fillText("aqua.flv - Slide " + nr, 20, canvas.height - 30);
       }
       function playSound() {
-        if (oscillator) {
-          oscillator.stop();
+        if (audioCtx) {
+          if (oscillator) {
+            oscillator.stop();
+          }
+          oscillator = audioCtx.createOscillator();
+          oscillator.connect(audioCtx.destination);
+          var freq = rnd(440, 2641);
+          oscillator.frequency.value = freq;
+          oscillator.type = "sine";
+          oscillator.start();
         }
-        oscillator = audioCtx.createOscillator();
-        oscillator.connect(audioCtx.destination);
-        var freq = rnd(440, 2641);
-        oscillator.frequency.value = freq;
-        oscillator.type = "sine";
-        oscillator.start();
       }
       function drawSlide() {
         canvas.width = window.innerWidth;
@@ -76,7 +78,12 @@
       function startSlideshow() {
         slideCtr = 0;
         canvas = document.getElementById("torso");
-        audioCtx = new AudioContext();
+        try {
+          window.AudioContext = window.AudioContext || window.webkitAudioContext;
+          audioCtx = new AudioContext();
+        } catch (e) {
+          console.warn("WebAudio is not supported, continuing without sound");
+        }
         playNext();
       }
     </script>
