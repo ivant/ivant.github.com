@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">  
+    <title>Webdriver Torso</title>  
+    <style type="text/css">
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+    </style>
+    <script type="text/javascript" src="/scripts/ga.js" async="async"></script>
+    <script type="text/javascript">
+      var slideCtr;
+      var canvas;
+      var audioCtx;
+      var oscillator;
+      function rnd(min, max) {
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+      function drawRect(c, style) {
+        var ctx = canvas.getContext("2d");
+        var x1 = rnd(0, canvas.width);
+        var x2 = rnd(0, canvas.width);
+        var y1 = rnd(0, canvas.height);
+        var y2 = rnd(0, canvas.height);
+        var w = Math.abs(x2 - x1) + 1;
+        var h = Math.abs(y2 - y1) + 1;
+        ctx.fillStyle = style;
+        ctx.fillRect(Math.min(x1, x2), Math.min(y1, y2), w, h);
+      }
+      function drawBlueAndRedBoxes() {
+        drawRect(canvas, "blue");
+        drawRect(canvas, "red");
+      }
+      function drawText(slideNumber) {
+        var ctx = canvas.getContext("2d");
+        ctx.font = "12pt Courier";
+        ctx.textAlign = "left";
+        ctx.textBaseline = "alphabetic";
+        ctx.fillStyle = "black";
+        var nr = Array(5 - slideNumber.toString().length).join('0') + slideNumber.toString();
+        ctx.fillText("aqua.flv - Slide " + nr, 20, canvas.height - 30);
+      }
+      function playSound() {
+        if (oscillator) {
+          oscillator.stop();
+        }
+        oscillator = audioCtx.createOscillator();
+        oscillator.connect(audioCtx.destination);
+        var freq = rnd(440, 2641);
+        oscillator.frequency.value = freq;
+        oscillator.type = "sine";
+        oscillator.start();
+      }
+      function drawSlide() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        drawBlueAndRedBoxes();
+        drawText(slideCtr);
+        playSound();
+        slideCtr = (slideCtr + 1) % 10000;
+      }
+      function playNext() {
+        drawSlide();
+        setTimeout(function() { playNext(); }, 1000);
+      }
+      function startSlideshow() {
+        slideCtr = 0;
+        canvas = document.getElementById("torso");
+        audioCtx = new AudioContext();
+        playNext();
+      }
+    </script>
+  </head>
+  <body onresize="drawSlide()" onload="startSlideshow()" onclick="drawSlide()">
+    <canvas id="torso"/>
+  </body>
+</html>
