@@ -1,0 +1,181 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">  
+    <script type="text/javascript" async src="/scripts/ga.js"></script>
+
+    <style type="text/css">
+      .line {
+        fill: none;
+        stroke: steelblue;
+        stroke-width: 1px;
+      }
+      .axis path, .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+    </style>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+          tex2jax: {
+            processClass: "math"
+          },
+          displayAlign: "left"
+      });
+    </script>
+    <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mootools/1.6.0/mootools-core.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sprintf/1.0.3/sprintf.min.js"></script>
+
+    <link rel="stylesheet" href="tangle/TangleKit.css" type="text/css">
+    <script type="text/javascript" src="tangle/Tangle.js"></script>
+    <script type="text/javascript" src="tangle/BVTouchable.js"></script>
+    <script type="text/javascript" src="tangle/TangleKit.js"></script>
+
+    <script type="text/javascript">
+      "use strict";
+      var tangle = undefined;  // Initialized on load.
+      var model = {
+        initialize: function() {
+          this.v0 = 1;
+          this.k1 = 1;
+          this.k2 = 1.00001;
+          this.S0 = 2;
+          this.P0 = 1;
+          this.T = 20;
+          this.eps = 1e-6;
+          this.maxIter = 2000;
+        },
+        update: function() {
+          let model = this;
+          function HigginsSelkov(t, x) {
+            let S = x[0];
+            let P = x[1];
+            let K = model.k1 * S * P * P;
+            return [
+              model.v0 - K,
+              K - model.k2 * P
+            ];
+          }
+          this.solution = numeric.dopri(
+              0 /* x0 */,
+              this.T /* x1 */,
+              [this.S0, this.P0] /* y */,
+              HigginsSelkov /* f */,
+              this.eps /* tol */,
+              this.maxIter /* maxit */);
+          this.plot();
+        },
+        plot: function() {
+          let ss = this.solution.y.map(function(x) { return x[0]; });
+          let ps = this.solution.y.map(function(x) { return x[1]; });
+
+          let sps = ss.map(function(e, i) { return [ss[i], ps[i]]; });
+
+          let outerWidth = 800;
+          let outerHeight = 600;
+          let margin = {
+            top: 20,
+            right: 20,
+            bottom: 40,
+            left: 40
+          };
+          let width = outerWidth - margin.left - margin.right;
+          let height = outerHeight - margin.top - margin.bottom;
+
+          let x = d3.scale.linear()
+            .domain(d3.extent(ss))
+            .range([0, width]);
+          let y = d3.scale.linear()
+            .domain(d3.extent(ps))
+            .range([height, 0]);
+          let line = d3.svg.line()
+            .x(function(d) {
+              return x(d[0]);
+            })
+            .y(function(d) {
+              return y(d[1]);
+            });
+          let xAxis = d3.svg.axis()
+            .scale(x)
+            .ticks(10)
+            .orient('bottom');
+          let yAxis = d3.svg.axis()
+            .scale(y)
+            .ticks(10)
+            .orient('left');
+          d3.select('#phaseplot svg').remove();
+          let svg = d3.select('#phaseplot')
+            .append('svg')
+            .attr('width', outerWidth)
+            .attr('height', outerHeight);
+          let g = svg.append('g')
+            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+          g.append('g')
+            .attr('class', 'y axis')
+            .call(yAxis);
+          g.append('g')
+            .attr('class', 'x axis')
+            .attr('transform', 'translate(0, ' + height + ')')
+            .call(xAxis);
+          g.append('path')
+            .datum(sps)
+            .attr('class', 'line')
+            .attr('d', line);
+          /*
+          svg.append('rect')
+            .attr('x', 0)
+            .attr('y', 0)
+            .attr('width', outerWidth)
+            .attr('height', outerHeight);
+          */
+        }
+      };
+
+      function initialize() {
+        tangle = new Tangle(document.getElementById("variables"), model);
+      }
+    </script>
+  </head>
+  <body onload="initialize();">
+    <h1>The Higgins-Selkov oscillator</h1>
+    <div>See a detailed <a href="https://johncarlosbaez.wordpress.com/2016/01/18/glycolysis-part-2/">post</a> by John Carlos Baez about glycolysis and alcohol-glucose osciallations for explanations.</div>
+    <div name="equations" class="math">
+      \begin{aligned}
+        \dot{S} &amp;= v_0 - k_1 S P^2 \\
+        \dot{P} &amp;= k_1 S P^2 - k_2 P
+      \end{aligned}
+    </div>
+    <table id="variables" class="math">
+      <tr>
+        <td>\(v_0 =\)</td>
+        <td><span data-var="v0" class="TKNumberField"/></td>
+        <td><span data-var="v0" data-min="0" data-max="2" data-step="0.01" data-format="%.2f" class="TKAdjustableNumber"/></td>
+        <td>\(S_0 =\)</td>
+        <td><span data-var="S0" class="TKNumberField"/></td>
+        <td><span data-var="S0" data-min="0" data-max="4" data-step="0.1" data-format="%.1f" class="TKAdjustableNumber"/></td>
+      </tr>
+      <tr>
+        <td>\(k_1 =\)</td>
+        <td><span data-var="k1" class="TKNumberField"/></td>
+        <td><span data-var="k1" data-min="0" data-max="2" data-step="0.01" data-format="%.2f" class="TKAdjustableNumber"/></td>
+        <td>\(P_0 =\)</td>
+        <td><span data-var="P0" class="TKNumberField"/></td>
+        <td><span data-var="P0" data-min="0" data-max="2" data-step="0.1" data-format="%.1f" class="TKAdjustableNumber"/></td>
+      </tr>
+      <tr>
+        <td>\(k_2 =\)</td>
+        <td><span data-var="k2" class="TKNumberField"/></td>
+        <td><span data-var="k2" data-min="0" data-max="2" data-step="0.01" data-format="%.2f" class="TKAdjustableNumber"/></td>
+        <td>\(T =\)</td>
+        <td><span data-var="T" class="TKNumberField"/></td>
+        <td><span data-var="T" data-min="0" data-max="40" data-step="1" class="TKAdjustableNumber"/></td>
+      </tr>
+    </table>
+    <div id="phaseplot"><svg/></div>
+  </body>
+</html>
