@@ -51,11 +51,11 @@
           this.maxIter = 2000;
         },
         update: function() {
-          let model = this;
+          var model = this;
           function HigginsSelkov(t, x) {
-            let S = x[0];
-            let P = x[1];
-            let K = model.k1 * S * P * P;
+            var S = x[0];
+            var P = x[1];
+            var K = model.k1 * S * P * P;
             return [
               model.v0 - K,
               K - model.k2 * P
@@ -71,49 +71,49 @@
           this.plot();
         },
         plot: function() {
-          let ss = this.solution.y.map(function(x) { return x[0]; });
-          let ps = this.solution.y.map(function(x) { return x[1]; });
+          var ss = this.solution.y.map(function(x) { return x[0]; });
+          var ps = this.solution.y.map(function(x) { return x[1]; });
 
-          let sps = ss.map(function(e, i) { return [ss[i], ps[i]]; });
+          var sps = ss.map(function(e, i) { return [ss[i], ps[i]]; });
 
-          let outerWidth = 800;
-          let outerHeight = 600;
-          let margin = {
+          var outerWidth = 800;
+          var outerHeight = 600;
+          var margin = {
             top: 20,
             right: 20,
             bottom: 40,
             left: 40
           };
-          let width = outerWidth - margin.left - margin.right;
-          let height = outerHeight - margin.top - margin.bottom;
+          var width = outerWidth - margin.left - margin.right;
+          var height = outerHeight - margin.top - margin.bottom;
 
-          let x = d3.scale.linear()
+          var x = d3.scale.linear()
             .domain(d3.extent(ss))
             .range([0, width]);
-          let y = d3.scale.linear()
+          var y = d3.scale.linear()
             .domain(d3.extent(ps))
             .range([height, 0]);
-          let line = d3.svg.line()
+          var line = d3.svg.line()
             .x(function(d) {
               return x(d[0]);
             })
             .y(function(d) {
               return y(d[1]);
             });
-          let xAxis = d3.svg.axis()
+          var xAxis = d3.svg.axis()
             .scale(x)
             .ticks(10)
             .orient('bottom');
-          let yAxis = d3.svg.axis()
+          var yAxis = d3.svg.axis()
             .scale(y)
             .ticks(10)
             .orient('left');
           d3.select('#phaseplot svg').remove();
-          let svg = d3.select('#phaseplot')
+          var svg = d3.select('#phaseplot')
             .append('svg')
             .attr('width', outerWidth)
             .attr('height', outerHeight);
-          let g = svg.append('g')
+          var g = svg.append('g')
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
           g.append('g')
             .attr('class', 'y axis')
@@ -126,13 +126,6 @@
             .datum(sps)
             .attr('class', 'line')
             .attr('d', line);
-          /*
-          svg.append('rect')
-            .attr('x', 0)
-            .attr('y', 0)
-            .attr('width', outerWidth)
-            .attr('height', outerHeight);
-          */
         }
       };
 
