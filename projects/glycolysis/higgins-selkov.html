@@ -72,7 +72,7 @@
               HigginsSelkov /* f */,
               this.eps /* tol */,
               this.maxIter /* maxit */);
-          this.sFixed = Math.pow(this.k2, 2) / (this.v0, this.k1);
+          this.sFixed = Math.pow(this.k2, 2) / (this.v0 * this.k1);
           this.pFixed = this.v0 / this.k2;
           this.stabilityResolution = (Math.pow(this.v0, 2) > Math.pow(this.k2, 3) / this.k1 ?
                                       "stable" :
