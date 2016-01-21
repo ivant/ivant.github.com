@@ -74,6 +74,9 @@
               this.maxIter /* maxit */);
           this.sFixed = Math.pow(this.k2, 2) / (this.v0, this.k1);
           this.pFixed = this.v0 / this.k2;
+          this.stabilityResolution = (Math.pow(this.v0, 2) > Math.pow(this.k2, 3) / this.k1 ?
+                                      "stable" :
+                                      "unstable");
           this.plot();
         },
         plot: function() {
@@ -185,7 +188,8 @@
           </table>
         </td>
         <td style="padding-left:4em;">
-          Fixed point: \(S^\star =\) <span data-var="sFixed"/>, \(P^\star =\) <span data-var="pFixed"/>.
+          <div>Fixed point: \(S^\star =\) <span data-var="sFixed"/>, \(P^\star =\) <span data-var="pFixed"/>.</div>
+          <div>The fixed point is <span style="font-weight: bold;" data-var="stabilityResolution"/>.</div>
         </td>
       </tr>
     </table>
