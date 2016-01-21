@@ -14,6 +14,10 @@
         stroke: #000;
         shape-rendering: crispEdges;
       }
+      .dot {
+        fill: #dc143c;
+        stroke: #8c0d26;
+      }
     </style>
     <script type="text/javascript" src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
@@ -68,6 +72,8 @@
               HigginsSelkov /* f */,
               this.eps /* tol */,
               this.maxIter /* maxit */);
+          this.sFixed = Math.pow(this.k2, 2) / (this.v0, this.k1);
+          this.pFixed = this.v0 / this.k2;
           this.plot();
         },
         plot: function() {
@@ -126,11 +132,16 @@
             .datum(sps)
             .attr('class', 'line')
             .attr('d', line);
+          g.append('circle')
+            .attr('class', 'dot')
+            .attr('cx', x(this.sFixed))
+            .attr('cy', y(this.pFixed))
+            .attr('r', 2);
         }
       };
 
       function initialize() {
-        tangle = new Tangle(document.getElementById("variables"), model);
+        tangle = new Tangle(document.body, model);
       }
     </script>
   </head>
@@ -143,30 +154,39 @@
         \dot{P} &amp;= k_1 S P^2 - k_2 P
       \end{aligned}
     </div>
-    <table id="variables" class="math">
+    <table>
       <tr>
-        <td>\(v_0 =\)</td>
-        <td><span data-var="v0" class="TKNumberField"/></td>
-        <td><span data-var="v0" data-min="0" data-max="2" data-step="0.01" data-format="%.2f" class="TKAdjustableNumber"/></td>
-        <td>\(S_0 =\)</td>
-        <td><span data-var="S0" class="TKNumberField"/></td>
-        <td><span data-var="S0" data-min="0" data-max="4" data-step="0.1" data-format="%.1f" class="TKAdjustableNumber"/></td>
-      </tr>
-      <tr>
-        <td>\(k_1 =\)</td>
-        <td><span data-var="k1" class="TKNumberField"/></td>
-        <td><span data-var="k1" data-min="0" data-max="2" data-step="0.01" data-format="%.2f" class="TKAdjustableNumber"/></td>
-        <td>\(P_0 =\)</td>
-        <td><span data-var="P0" class="TKNumberField"/></td>
-        <td><span data-var="P0" data-min="0" data-max="2" data-step="0.1" data-format="%.1f" class="TKAdjustableNumber"/></td>
-      </tr>
-      <tr>
-        <td>\(k_2 =\)</td>
-        <td><span data-var="k2" class="TKNumberField"/></td>
-        <td><span data-var="k2" data-min="0" data-max="2" data-step="0.01" data-format="%.2f" class="TKAdjustableNumber"/></td>
-        <td>\(T =\)</td>
-        <td><span data-var="T" class="TKNumberField"/></td>
-        <td><span data-var="T" data-min="0" data-max="80" data-step="1" class="TKAdjustableNumber"/></td>
+        <td>
+          <table id="variables" class="math">
+            <tr>
+              <td>\(v_0 =\)</td>
+              <td><span data-var="v0" class="TKNumberField"/></td>
+              <td><span data-var="v0" data-min="0" data-max="2" data-step="0.01" data-format="%.2f" class="TKAdjustableNumber"/></td>
+              <td>\(S_0 =\)</td>
+              <td><span data-var="S0" class="TKNumberField"/></td>
+              <td><span data-var="S0" data-min="0" data-max="4" data-step="0.1" data-format="%.1f" class="TKAdjustableNumber"/></td>
+            </tr>
+            <tr>
+              <td>\(k_1 =\)</td>
+              <td><span data-var="k1" class="TKNumberField"/></td>
+              <td><span data-var="k1" data-min="0" data-max="2" data-step="0.01" data-format="%.2f" class="TKAdjustableNumber"/></td>
+              <td>\(P_0 =\)</td>
+              <td><span data-var="P0" class="TKNumberField"/></td>
+              <td><span data-var="P0" data-min="0" data-max="2" data-step="0.1" data-format="%.1f" class="TKAdjustableNumber"/></td>
+            </tr>
+            <tr>
+              <td>\(k_2 =\)</td>
+              <td><span data-var="k2" class="TKNumberField"/></td>
+              <td><span data-var="k2" data-min="0" data-max="2" data-step="0.01" data-format="%.2f" class="TKAdjustableNumber"/></td>
+              <td>\(T =\)</td>
+              <td><span data-var="T" class="TKNumberField"/></td>
+              <td><span data-var="T" data-min="0" data-max="80" data-step="1" class="TKAdjustableNumber"/></td>
+            </tr>
+          </table>
+        </td>
+        <td style="padding-left:4em;">
+          Fixed point: \(S^\star =\) <span data-var="sFixed"/>, \(P^\star =\) <span data-var="pFixed"/>.
+        </td>
       </tr>
     </table>
     <div id="phaseplot"><svg/></div>
