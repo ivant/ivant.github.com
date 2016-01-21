@@ -18,6 +18,16 @@
         fill: #dc143c;
         stroke: #8c0d26;
       }
+      #markerArrow {
+        fill: #ccc;
+        stroke: #ccc;
+        stroke-width: 1px;
+      }
+      .vector-field {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 1px;
+      }
     </style>
     <script type="text/javascript" src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
@@ -65,6 +75,7 @@
               K - model.k2 * P
             ];
           }
+
           this.solution = numeric.dopri(
               0 /* x0 */,
               this.T /* x1 */,
@@ -72,18 +83,34 @@
               HigginsSelkov /* f */,
               this.eps /* tol */,
               this.maxIter /* maxit */);
+
+          this.ss = this.solution.y.map(function(x) { return x[0]; });
+          this.ps = this.solution.y.map(function(x) { return x[1]; });
+
+          this.ssExtent = d3.extent(this.ss);
+          this.psExtent = d3.extent(this.ps);
+
+          this.phasePortraitGrid = (this.ssExtent[1] - this.ssExtent[0]) / 100;
+          var step = this.phasePortraitGrid;
+          this.phaseVectors = [];
+          for (var p = this.psExtent[0] + step / 2; p < this.psExtent[1]; p += step) {
+            for (var s = this.ssExtent[0] + step / 2; s < this.ssExtent[1]; s += step) {
+              this.phaseVectors.push([[s, p], HigginsSelkov(0, [s, p])]);
+            }
+          }
+
           this.sFixed = Math.pow(this.k2, 2) / (this.v0 * this.k1);
           this.pFixed = this.v0 / this.k2;
           this.stabilityResolution = (Math.pow(this.v0, 2) > Math.pow(this.k2, 3) / this.k1 ?
                                       "stable" :
                                       "unstable");
+
           this.plot();
         },
         plot: function() {
-          var ss = this.solution.y.map(function(x) { return x[0]; });
-          var ps = this.solution.y.map(function(x) { return x[1]; });
-
-          var sps = ss.map(function(e, i) { return [ss[i], ps[i]]; });
+          var model = this;
+          var sps = model.ss.map(function(e, i) { return [model.ss[i], model.ps[i]]; });
+          var phaseMaxNorm = Math.max.apply(null, model.phaseVectors.map(function(pv) { return Math.hypot.apply(null, pv[1]); }));
 
           var outerWidth = 800;
           var outerHeight = 600;
@@ -97,10 +124,10 @@
           var height = outerHeight - margin.top - margin.bottom;
 
           var x = d3.scale.linear()
-            .domain(d3.extent(ss))
+            .domain(this.ssExtent)
             .range([0, width]);
           var y = d3.scale.linear()
-            .domain(d3.extent(ps))
+            .domain(this.psExtent)
             .range([height, 0]);
           var line = d3.svg.line()
             .x(function(d) {
@@ -122,6 +149,17 @@
             .append('svg')
             .attr('width', outerWidth)
             .attr('height', outerHeight);
+          svg.append('defs:marker')
+            .attr('id', 'markerArrow')
+            .attr('markerWidth', 2)
+            .attr('markerHeight', 2)
+            .attr('orient', 'auto')
+            .attr('refX', 5)
+            .attr('refY', 0)
+            .attr('viewBox', '0 -5 10 10')
+            .append('path')
+              .attr('d', 'M0,-5L10,0,L0,5');
+
           var g = svg.append('g')
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
           g.append('g')
@@ -131,10 +169,25 @@
             .attr('class', 'x axis')
             .attr('transform', 'translate(0, ' + height + ')')
             .call(xAxis);
+          // Plot the vector field.
+          for (var i = 0; i < this.phaseVectors.length; ++i) {
+            var sp = this.phaseVectors[i][0];
+            var spDot = this.phaseVectors[i][1];
+            var spDotLen = Math.hypot.apply(null, spDot);
+            g.append('path')
+              .datum([sp,
+                      [sp[0] + (this.phasePortraitGrid / 2) * spDot[0] / spDotLen,
+                       sp[1] + (this.phasePortraitGrid / 2) * spDot[1] / spDotLen]])
+              .attr('class', 'vector-field')
+              .attr('marker-end', 'url(#markerArrow)')
+              .attr('d', line);
+          }
+          // Plot the solution.
           g.append('path')
             .datum(sps)
             .attr('class', 'line')
             .attr('d', line);
+          // Plot the fixed point.
           g.append('circle')
             .attr('class', 'dot')
             .attr('cx', x(this.sFixed))
