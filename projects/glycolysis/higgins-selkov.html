@@ -60,9 +60,11 @@
           this.k2 = 1.00001;
           this.S0 = 2;
           this.P0 = 1;
-          this.T = 20;
+          this.T = 100;
           this.eps = 1e-6;
           this.maxIter = 2000;
+          this.numSteps = 2000;
+          this.Tstep = 50;
         },
         update: function() {
           var model = this;
@@ -76,34 +78,60 @@
             ];
           }
 
-          this.solution = numeric.dopri(
-              0 /* x0 */,
-              this.T /* x1 */,
-              [this.S0, this.P0] /* y */,
-              HigginsSelkov /* f */,
-              this.eps /* tol */,
-              this.maxIter /* maxit */);
-
-          this.ss = this.solution.y.map(function(x) { return x[0]; });
-          this.ps = this.solution.y.map(function(x) { return x[1]; });
-
-          this.ssExtent = d3.extent(this.ss);
-          this.psExtent = d3.extent(this.ps);
-
-          this.phasePortraitGrid = (this.ssExtent[1] - this.ssExtent[0]) / 100;
-          var step = this.phasePortraitGrid;
-          this.phaseVectors = [];
-          for (var p = this.psExtent[0] + step / 2; p < this.psExtent[1]; p += step) {
-            for (var s = this.ssExtent[0] + step / 2; s < this.ssExtent[1]; s += step) {
-              this.phaseVectors.push([[s, p], HigginsSelkov(0, [s, p])]);
-            }
-          }
-
           this.sFixed = Math.pow(this.k2, 2) / (this.v0 * this.k1);
           this.pFixed = this.v0 / this.k2;
           this.stabilityResolution = (Math.pow(this.v0, 2) > Math.pow(this.k2, 3) / this.k1 ?
                                       "stable" :
                                       "unstable");
+
+          var outOfRange = false;
+          function IsOutOfRange(x) {
+            return (Math.hypot(x[0] - model.sFixed, x[1] - model.pFixed) / Math.hypot(model.sFixed - model.S0, model.pFixed - model.P0)) > 25;
+          }
+
+          var xs = [];
+          var S0 = this.S0;
+          var P0 = this.P0;
+          for (var T = 0; T < this.T; T += this.Tstep) {
+            var toT = Math.min(T + this.Tstep, this.T);
+            this.solution = numeric.dopri(
+                0 /* x0 */,        // Since we have autonomous system, we can ignore t.
+                toT - T /* x1 */,  // This is useful because of the ODE solver problems.
+                [S0, P0] /* y */,
+                HigginsSelkov /* f */,
+                this.eps /* tol */,
+                this.maxIter /* maxit */);
+
+            for (var t = T; t < toT; t += this.Tstep / this.numSteps) {
+              var x = this.solution.at(t - T);
+              if (IsOutOfRange(x)) {
+                outOfRange = true;
+                break;
+              } else {
+                xs.push(x);
+              }
+            }
+            if (outOfRange) break;
+            var end = this.solution.at(toT - T);
+            S0 = end[0];
+            P0 = end[1];
+          }
+          this.ss = xs.map(function(x) { return x[0]; });
+          this.ps = xs.map(function(x) { return x[1]; });
+
+          this.ssExtent = d3.extent(this.ss);
+          this.psExtent = d3.extent(this.ps);
+
+          this.phaseGridStepX = (this.ssExtent[1] - this.ssExtent[0]) / 80;
+          this.phaseGridStepY = (this.psExtent[1] - this.psExtent[0]) / 60;
+          var stepX = this.phaseGridStepX;
+          var stepY = this.phaseGridStepY;
+          this.phaseVectors = [];
+          for (var p = this.psExtent[0] + stepY / 2; p < this.psExtent[1]; p += stepY) {
+            for (var s = this.ssExtent[0] + stepX / 2; s < this.ssExtent[1]; s += stepX) {
+              this.phaseVectors.push([[s, p], HigginsSelkov(0, [s, p])]);
+            }
+          }
 
           this.plot();
         },
@@ -174,10 +202,12 @@
             var sp = this.phaseVectors[i][0];
             var spDot = this.phaseVectors[i][1];
             var spDotLen = Math.hypot.apply(null, spDot);
+            var dx = Math.min(this.phaseGridStepX * 0.4,
+                              (this.phaseGridStepX / 2) * spDot[0] / Math.sqrt(spDotLen));
+            var dy = Math.min(this.phaseGridStepY * 0.4,
+                              (this.phaseGridStepY / 2) * spDot[1] / Math.sqrt(spDotLen));
             g.append('path')
-              .datum([sp,
-                      [sp[0] + (this.phasePortraitGrid / 2) * spDot[0] / spDotLen,
-                       sp[1] + (this.phasePortraitGrid / 2) * spDot[1] / spDotLen]])
+              .datum([sp, [sp[0] + dx, sp[1] + dy]])
               .attr('class', 'vector-field')
               .attr('marker-end', 'url(#markerArrow)')
               .attr('d', line);
@@ -234,9 +264,9 @@
               <td>\(k_2 =\)</td>
               <td><span data-var="k2" class="TKNumberField"/></td>
               <td><span data-var="k2" data-min="0" data-max="2" data-step="0.01" data-format="%.2f" class="TKAdjustableNumber"/></td>
-              <td>\(T =\)</td>
+              <td>\(T_{max} =\)</td>
               <td><span data-var="T" class="TKNumberField"/></td>
-              <td><span data-var="T" data-min="0" data-max="80" data-step="1" class="TKAdjustableNumber"/></td>
+              <td><span data-var="T" data-min="0" data-max="1000" data-step="1" class="TKAdjustableNumber"/></td>
             </tr>
           </table>
         </td>
