@@ -14,7 +14,7 @@ Typical phantom power setup on the amplifier side:
 
 Given the above description, the available current depends on desired voltage of the circuit:
 
-\[ I(V) = (48 - V) / (6.8K \parallel 6.8K) \]
+$$ I(V) = (48 - V) / (6.8K \parallel 6.8K) $$
 
 ```gnuplot
 set title "Phantom power available current"
