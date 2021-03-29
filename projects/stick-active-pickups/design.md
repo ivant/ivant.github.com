@@ -25,4 +25,13 @@ i(v) = (48-v)/(6.8e3/2)
 plot [v=0:48] i(v) title ""
 ```
 
-![Phantom power available current for desired supply voltage](phantom-power-current-vs-voltage.svg)
+![Phantom power available current for desired supply voltage 0V to 48V](phantom-power-current-vs-voltage-full.svg)
+
+Let's zoom in on the more usable range:
+
+```gnuplot
+set xtics 1
+plot [v=0:21] i(v) title ""
+```
+
+![Phantom power available current for desired supply voltage 0V to 21V](phantom-power-current-vs-voltage-zoom.svg)
